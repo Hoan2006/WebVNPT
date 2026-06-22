@@ -1,0 +1,147 @@
+/* ==========================
+   HEADER - FORCE WHITE BACKGROUND
+========================== */
+
+.top-header {
+  background-color: #ffffff !important; /* CHẮC CHẮN TRẮNG */
+  background-image: none !important;    /* xoá gradient cũ */
+
+  padding: 12px 0;
+
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid #eaeaea;
+}
+
+/* ==========================
+   LAYOUT
+========================== */
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ==========================
+   LOGO
+========================== */
+
+.header-logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-image {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* ==========================
+   RIGHT SIDE
+========================== */
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+
+  flex-wrap: nowrap; /* KHÔNG cho xuống dòng */
+}
+
+/* EMAIL + HOTLINE */
+.header-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  color: #0077cc;
+  font-size: 15px;
+  font-weight: 500;
+
+  text-decoration: none;
+
+  white-space: nowrap; /* chống xuống dòng */
+}
+
+.header-info:hover {
+  color: #005fa3;
+}
+
+.header-info strong {
+  font-weight: 700;
+}
+
+/* ==========================
+   BUTTON
+========================== */
+
+.register-btn {
+  background: #0077cc !important;
+  color: #ffffff !important;
+
+  border: none;
+
+  padding: 12px 26px;
+
+  border-radius: 30px;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+
+  transition: all 0.3s ease;
+}
+
+.register-btn:hover {
+  background: #005fa3;
+  transform: translateY(-2px);
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media (max-width: 992px) {
+  .header-content {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .header-right {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .logo-image {
+    height: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-right {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .header-info {
+    font-size: 14px;
+  }
+
+  .register-btn {
+    width: 220px;
+  }
+
+  .logo-image {
+    height: 45px;
+  }
+}

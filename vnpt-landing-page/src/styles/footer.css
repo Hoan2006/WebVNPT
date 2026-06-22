@@ -1,0 +1,173 @@
+/* ==========================
+   FOOTER
+========================== */
+
+.footer{
+  background:#ffffff !important;
+
+  margin:0 !important;
+  padding:0 !important;
+
+  position:relative;
+
+  border-top:
+    1px solid #e8edf3;
+
+  box-shadow:
+    0 -2px 10px rgba(0,0,0,.03);
+}
+
+/* ==========================
+   TOP
+========================== */
+
+.footer-top{
+  background:#ffffff !important;
+
+  padding:70px 0 45px;
+}
+
+.footer-grid{
+  display:grid;
+
+  grid-template-columns:
+    1.6fr 1fr 1fr 1.4fr;
+
+  gap:50px;
+}
+
+.footer-logo{
+  font-size:32px;
+  font-weight:800;
+
+  color:#0072ce;
+
+  margin-bottom:18px;
+}
+
+/* ==========================
+   MÔ TẢ
+========================== */
+
+.footer-desc{
+  color:#222 !important;
+
+  font-size:16px;
+
+  line-height:1.9;
+
+  font-weight:500;
+}
+
+.footer-col h3{
+  color:#111;
+
+  font-size:20px;
+
+  font-weight:700;
+
+  margin-bottom:20px;
+}
+
+.footer-col ul{
+  list-style:none;
+
+  margin:0;
+  padding:0;
+}
+
+.footer-col li{
+  color:#444;
+
+  line-height:1.8;
+
+  margin-bottom:14px;
+}
+
+.footer-col a{
+  color:#444;
+
+  text-decoration:none;
+
+  transition:.3s;
+}
+
+.footer-col a:hover{
+  color:#0072ce;
+
+  padding-left:5px;
+}
+
+.footer-email{
+  white-space:nowrap;
+}
+
+/* ==========================
+   FOOTER BOTTOM
+========================== */
+
+.footer-bottom{
+  background:#f4f8fc !important;
+
+  border-top:
+    1px solid #dde6ef;
+
+  padding:20px 0;
+}
+
+.footer-bottom p{
+  margin:0;
+
+  text-align:center;
+
+  color:#222 !important;
+
+  font-size:14px;
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:992px){
+
+  .footer-grid{
+    grid-template-columns:
+      repeat(2,1fr);
+
+    gap:35px;
+  }
+
+  .footer-email{
+    white-space:normal;
+    word-break:break-word;
+  }
+
+}
+
+@media(max-width:768px){
+
+  .footer-top{
+    padding:50px 0 35px;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr;
+
+    gap:28px;
+  }
+
+  .footer-logo{
+    font-size:28px;
+  }
+
+  .footer-col h3{
+    font-size:18px;
+  }
+
+  .footer-desc,
+  .footer-col li{
+    font-size:14px;
+  }
+
+}

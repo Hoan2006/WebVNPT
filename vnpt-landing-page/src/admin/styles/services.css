@@ -1,0 +1,181 @@
+.services-page {
+  background: #fff;
+  padding: 25px;
+  border-radius: 16px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.add-btn {
+  background: #0072ce;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.toolbar {
+  margin-bottom: 20px;
+}
+
+.toolbar input {
+  width: 350px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.services-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout:fixed;
+}
+
+.services-table th {
+  background: #0072ce;
+  color: white;
+  padding: 14px;
+}
+
+/* Ảnh */
+.services-table th:nth-child(1){
+  width:110px;
+}
+
+/* Tên dịch vụ */
+.services-table th:nth-child(2){
+  width:210px;
+}
+
+/* Mô tả - thu hẹp lại */
+.services-table th:nth-child(3){
+  width:300px;
+}
+
+/* Tính năng - rộng hơn */
+.services-table th:nth-child(4){
+  width:80px;
+}
+
+/* Thao tác */
+.services-table th:nth-child(5){
+  width:140px;
+}
+
+.services-table td {
+  padding: 14px;
+  border-bottom: 1px solid #eee;
+}
+
+.service-img {
+  width: 90px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.edit-btn {
+  background: #1890ff;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  margin-right: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background: #ff4d4f;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.4);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  width: 500px;
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+}
+
+.modal-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.image-preview {
+  margin-top: 15px;
+}
+
+.image-preview img {
+  width: 250px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.feature-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.feature-row input {
+  flex: 1;
+}
+
+.add-feature {
+  margin-top: 15px;
+  background: #0072ce;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+}
+
+.delete-feature {
+  background: #ff4d4f;
+  color: white;
+  border: none;
+  width: 40px;
+  border-radius: 8px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.pagination button {
+  border: none;
+  padding: 10px 16px;
+  background: #0072ce;
+  color: white;
+  border-radius: 8px;
+}

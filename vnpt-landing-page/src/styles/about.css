@@ -1,0 +1,153 @@
+.about-hero{
+  background:linear-gradient(135deg,#0066cc,#00a8ff);
+  color:white;
+  padding:100px 0;
+  text-align:center;
+}
+
+.about-hero h1{
+  font-size:48px;
+  margin-bottom:20px;
+}
+
+.about-hero p{
+  font-size:20px;
+}
+
+.stats{
+  padding:80px 0;
+  background:white;
+}
+
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:25px;
+}
+
+.stat-box{
+  background:#f5f7fb;
+  text-align:center;
+  padding:30px;
+  border-radius:15px;
+}
+
+.stat-box h2{
+  color:#0077cc;
+  font-size:40px;
+}
+
+.about-content{
+  padding:80px 0;
+}
+
+.about-content h2{
+  text-align:center;
+  margin-bottom:30px;
+  color:#0077cc;
+}
+
+.about-content p{
+  margin-bottom:15px;
+  font-size:18px;
+}
+
+.service-system{
+  padding:80px 0;
+  background:#f5f7fb;
+}
+
+.service-system h2{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.service-wrap{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+}
+
+.service-box{
+  background:white;
+  padding:30px;
+  border-radius:15px;
+}
+
+.service-box h3{
+  color:#0077cc;
+  margin-bottom:20px;
+}
+
+.service-box li{
+  margin-bottom:12px;
+}
+
+.commitment{
+  padding:80px 0;
+}
+
+.commitment h2{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.commit-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:25px;
+}
+
+.commit-card{
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.commit-card h3{
+  color:#0077cc;
+  margin-bottom:15px;
+}
+
+.contact-info{
+  padding:80px 0;
+  background:#f5f7fb;
+}
+
+.contact-info h2{
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.contact-card{
+  max-width:700px;
+  margin:auto;
+  background:white;
+  padding:40px;
+  border-radius:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.contact-card h3{
+  color:#0077cc;
+  margin-bottom:20px;
+}
+
+.contact-card p{
+  margin-bottom:10px;
+}
+
+@media(max-width:768px){
+
+.stats-grid,
+.commit-grid,
+.service-wrap{
+  grid-template-columns:1fr;
+}
+
+.about-hero h1{
+  font-size:32px;
+}
+
+}

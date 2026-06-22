@@ -1,0 +1,238 @@
+.service-intro{
+  padding:70px 0;
+  background:#fff;
+}
+
+.service-intro h2{
+  text-align:center;
+
+  font-size:38px;
+  font-weight:700;
+
+  color:#0077cc;
+
+  margin-bottom:35px;
+}
+
+.slider-wrapper{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.slider-window{
+  width:100%;
+  overflow:hidden;
+}
+
+.slider-track{
+  display:flex;
+  transition:.5s ease;
+}
+
+/* CARD */
+
+.service-card{
+  min-width:25%;
+  padding:10px;
+  cursor:pointer;
+
+  flex-shrink:0;
+}
+
+.service-card-body{
+  background:#fff;
+
+  border-radius:18px;
+
+  overflow:hidden;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.08);
+
+  transition:.3s;
+
+  display:flex;
+  flex-direction:column;
+
+  height:100%;
+}
+
+.service-card:hover .service-card-body{
+  transform:translateY(-6px);
+
+  box-shadow:
+    0 15px 35px rgba(0,0,0,.12);
+}
+
+.service-card img{
+  width:100%;
+
+  height:180px;
+
+  object-fit:cover;
+}
+
+.service-card-body h3{
+  padding:18px 18px 10px;
+
+  color:#0077cc;
+
+  font-size:20px;
+  font-weight:700;
+
+  line-height:1.4;
+}
+
+.service-card-body p{
+  padding:0 18px;
+
+  color:#555;
+
+  font-size:15px;
+
+  line-height:1.7;
+
+  flex:1;
+}
+
+.service-price{
+  display:block;
+
+  padding:15px 18px 22px;
+
+  font-size:22px;
+  font-weight:700;
+
+  color:#e60000;
+}
+
+/* BUTTON */
+
+.slider-btn{
+  width:44px;
+  height:44px;
+
+  border:none;
+
+  border-radius:50%;
+
+  background:#0077cc;
+
+  color:#fff;
+
+  font-size:20px;
+
+  cursor:pointer;
+
+  flex-shrink:0;
+
+  transition:.3s;
+}
+
+.slider-btn:hover{
+  background:#005fa3;
+}
+
+/* TABLET */
+
+@media(max-width:992px){
+
+  .service-card{
+    min-width:50%;
+  }
+
+  .service-card img{
+    height:170px;
+  }
+
+  .service-card-body h3{
+    font-size:18px;
+  }
+
+  .service-price{
+    font-size:20px;
+  }
+
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+  .service-intro{
+    padding:60px 0;
+  }
+
+  .service-intro h2{
+    font-size:28px;
+    margin-bottom:25px;
+  }
+
+  .slider-wrapper{
+    gap:8px;
+  }
+
+  .service-card{
+    min-width:100%;
+    padding:6px;
+  }
+
+  .service-card-body{
+    border-radius:16px;
+  }
+
+  .service-card img{
+    height:160px;
+  }
+
+  .service-card-body h3{
+    font-size:18px;
+    padding:15px 15px 8px;
+  }
+
+  .service-card-body p{
+    font-size:14px;
+    padding:0 15px;
+  }
+
+  .service-price{
+    font-size:20px;
+    padding:12px 15px 18px;
+  }
+
+  .slider-btn{
+    width:38px;
+    height:38px;
+
+    font-size:16px;
+  }
+
+}
+
+/* MÀN NHỎ HƠN IPHONE SE */
+
+@media(max-width:480px){
+
+  .service-card{
+    padding:4px;
+  }
+
+  .service-card img{
+    height:140px;
+  }
+
+  .service-card-body h3{
+    font-size:17px;
+  }
+
+  .service-card-body p{
+    font-size:13px;
+    line-height:1.6;
+  }
+
+  .service-price{
+    font-size:18px;
+  }
+
+}

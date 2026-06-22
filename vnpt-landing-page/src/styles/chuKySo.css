@@ -1,0 +1,214 @@
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* =========================
+   BANNER
+========================= */
+
+.banner-image img {
+  width: 100%;
+  display: block;
+}
+
+/* =========================
+   SECTION
+========================= */
+
+.page-section {
+  padding: 50px 0;
+}
+
+.page-section.gray {
+  background: #f7f9fc;
+}
+
+.container {
+  width: 92%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.section-title {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.section-title h2 {
+  font-size: 40px;
+  color: #0072ce;
+  font-weight: 800;
+}
+
+/* =========================
+   INTRO TEXT
+========================= */
+
+.intro-content {
+  max-width: 900px;
+  margin: auto;
+}
+
+.intro-content p {
+  font-size: 18px;
+  line-height: 1.9;
+  color: #444;
+  margin-bottom: 18px;
+  text-align: justify;
+}
+
+/* =========================
+   MODERN BENEFIT GRID
+========================= */
+
+.benefit-grid.modern-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 26px;
+}
+
+/* =========================
+   MODERN CARD
+========================= */
+
+.benefit-card.modern {
+  background: #fff;
+  border-radius: 18px;
+  padding: 26px 24px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+  transition: all 0.25s ease;
+
+  display: flex;
+  flex-direction: column;
+
+  min-height: 180px;
+}
+
+.benefit-card.modern:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================
+   CARD HEADER (FIX TEXT FLOW)
+========================= */
+
+.card-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+/* NUMBER BADGE */
+.badge {
+  min-width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: #0072ce;
+  color: white;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* TITLE FIX KHÔNG VỠ CHỮ */
+.card-head h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0072ce;
+
+  line-height: 1.4;
+
+  /* QUAN TRỌNG: chống vỡ từng 2-3 chữ */
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+
+/* =========================
+   TEXT FIX
+========================= */
+
+.benefit-card.modern p {
+  font-size: 15.8px;
+  line-height: 1.75;
+  color: #555;
+
+  /* FIX TEXT BREAK LỎNG LẺ */
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+/* =========================
+   CONTACT SECTION
+========================= */
+
+.chu-ky-contact-section {
+  padding: 90px 0;
+  background: linear-gradient(135deg, #0072ce, #00a9ff);
+  position: relative;
+  overflow: hidden;
+}
+
+.chu-ky-contact-section::before,
+.chu-ky-contact-section::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.chu-ky-contact-section::before {
+  width: 400px;
+  height: 400px;
+  top: -120px;
+  right: -120px;
+}
+
+.chu-ky-contact-section::after {
+  width: 300px;
+  height: 300px;
+  bottom: -120px;
+  left: -120px;
+}
+
+.contact-wrapper {
+  max-width: 800px;
+  margin: auto;
+}
+
+/* =========================
+   RESPONSIVE FIX
+========================= */
+
+@media (max-width: 768px) {
+  .section-title h2 {
+    font-size: 28px;
+  }
+
+  .card-head h3 {
+    font-size: 18px;
+  }
+
+  .benefit-card.modern {
+    padding: 20px;
+  }
+}

@@ -1,0 +1,139 @@
+.sidebar{
+  width:260px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #0072ce,
+      #0055a5
+    );
+
+  color:white;
+
+  min-height:100vh;
+
+  display:flex;
+  flex-direction:column;
+}
+
+/* ==========================
+   LOGO
+========================== */
+
+.sidebar-logo{
+  display:flex;
+  flex-direction:column;
+
+  align-items:center;
+  justify-content:center;
+
+  padding:30px 15px;
+
+  border-bottom:
+    1px solid rgba(255,255,255,.2);
+}
+
+.sidebar-logo img{
+  width:70px;
+}
+
+.sidebar-logo h3{
+  margin:0;
+
+  font-size:20px;
+  font-weight:700;
+
+  text-align:center;
+}
+
+/* ==========================
+   MENU
+========================== */
+
+.sidebar-menu{
+  display:flex;
+  flex-direction:column;
+
+  flex:1;
+}
+
+.sidebar-menu a{
+  color:white;
+
+  text-decoration:none;
+
+  padding:15px 25px;
+
+  transition:.3s;
+}
+
+.sidebar-menu a:hover{
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .15
+    );
+}
+
+.sidebar-menu a.active{
+  background:white;
+
+  color:#0072ce;
+
+  font-weight:700;
+}
+
+/* ==========================
+   FOOTER
+========================== */
+
+.sidebar-footer{
+  margin-top:auto;
+
+  padding:20px;
+
+  border-top:
+    1px solid rgba(255,255,255,.2);
+}
+
+/* ==========================
+   LOGOUT BUTTON
+========================== */
+
+.sidebar-logout{
+  width:100%;
+
+  padding:14px;
+
+  border:none;
+
+  border-radius:12px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .15
+    );
+
+  color:white;
+
+  font-size:15px;
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:.3s;
+}
+
+.sidebar-logout:hover{
+  background:white;
+
+  color:#e53935;
+
+  transform:
+    translateY(-2px);
+}

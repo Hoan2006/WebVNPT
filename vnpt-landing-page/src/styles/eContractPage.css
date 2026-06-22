@@ -1,0 +1,377 @@
+/* ==========================
+   CONTACT FORM
+========================== */
+
+.econtract-contact-section{
+  padding:100px 0;
+
+  background:linear-gradient(
+    135deg,
+    #0072ce,
+    #00a9ff
+  );
+
+  position:relative;
+  overflow:hidden;
+}
+
+/* vòng tròn trang trí */
+
+.econtract-contact-section::before{
+  content:"";
+
+  position:absolute;
+
+  width:400px;
+  height:400px;
+
+  border-radius:50%;
+
+  background:rgba(255,255,255,.08);
+
+  top:-120px;
+  right:-120px;
+}
+
+.econtract-contact-section::after{
+  content:"";
+
+  position:absolute;
+
+  width:300px;
+  height:300px;
+
+  border-radius:50%;
+
+  background:rgba(255,255,255,.08);
+
+  bottom:-100px;
+  left:-100px;
+}
+
+.contact-wrapper{
+  max-width:800px;
+  margin:auto;
+  position:relative;
+  z-index:2;
+}
+
+.price-desc{
+  font-weight:700;
+  margin:15px 0 25px;
+  line-height:1.6;
+  color:#333;
+}
+
+.price-card button{
+  width:100%;
+  background:#0066cc;
+  color:white;
+  padding:14px;
+  border:none;
+  border-radius:10px;
+
+  font-weight:700;
+  font-size:16px;
+
+  cursor:pointer;
+  transition:.3s;
+}
+
+.price-card button:hover{
+  background:#004c99;
+  transform:translateY(-2px);
+}
+
+.price-card button{
+  letter-spacing:0.5px;
+  text-transform:uppercase;
+  background:linear-gradient(135deg,#0066cc,#00aaff);
+}
+
+.price-card ul{
+  margin:20px 0;
+  padding:0;
+
+  list-style:none;
+}
+
+.price-card li{
+  padding:8px 0;
+  border-bottom:
+    1px solid #eee;
+
+  line-height:1.6;
+}
+
+.price-card li:last-child{
+  border-bottom:none;
+}
+
+.banner-image{
+  width:100%;
+}
+
+.banner-image img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+.section-heading{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.section-heading h2{
+  font-size:40px;
+  font-weight:700;
+  color:#0066cc;
+  margin-bottom:18px;
+  line-height:1.3;
+}
+
+.section-heading p{
+  max-width:850px;
+  margin:auto;
+
+  color:#555;
+
+  font-size:18px;
+  line-height:1.8;
+}
+
+.contract-intro,
+.process,
+.benefits,
+.pricing,
+.faq,
+.testimonial{
+  padding:100px 0;
+}
+
+.intro-grid,
+.benefit-grid,
+.process-grid,
+.pricing-grid,
+.testimonial-grid{
+  display:grid;
+  gap:25px;
+}
+
+.intro-grid{
+  grid-template-columns:repeat(4,1fr);
+}
+
+.process-grid{
+  grid-template-columns:repeat(4,1fr);
+}
+
+.benefit-grid{
+  grid-template-columns:repeat(4,1fr);
+}
+
+.pricing-grid{
+  grid-template-columns:repeat(3,1fr);
+}
+
+.testimonial-grid{
+  grid-template-columns:repeat(2,1fr);
+}
+
+.intro-card,
+.benefit-card,
+.price-card,
+.testimonial-card,
+.faq-item{
+  background:white;
+  padding:35px;
+  border-radius:24px;
+
+  box-shadow:
+  0 15px 35px rgba(0,0,0,.08);
+
+  transition:.35s;
+}
+
+.intro-card:hover,
+.benefit-card:hover,
+.price-card:hover{
+  transform:translateY(-8px);
+  transition:.3s;
+}
+
+.step{
+  background:linear-gradient(
+    135deg,
+    #0066cc,
+    #008cff
+  );
+
+  color:#fff;
+
+  padding:35px 25px;
+
+  border-radius:22px;
+
+  text-align:center;
+
+  box-shadow:
+    0 12px 30px rgba(0,102,204,.18);
+
+  transition:.3s;
+}
+
+.step:hover{
+  transform:translateY(-6px);
+}
+
+.step span{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  width:70px;
+  height:70px;
+
+  margin:0 auto 18px;
+
+  background:#fff;
+
+  color:#0066cc;
+
+  border-radius:50%;
+
+  font-size:28px;
+  font-weight:700;
+}
+
+.step h3{
+  margin:0;
+
+  font-size:20px;
+  line-height:1.6;
+  font-weight:600;
+}
+
+.price-card{
+  text-align:center;
+}
+
+.price-card h4{
+  color:#ff5722;
+  font-size:34px;
+  margin:20px 0;
+}
+
+.price-card button{
+  width:100%;
+  background:#0066cc;
+  color:white;
+  padding:14px;
+  border:none;
+  border-radius:10px;
+}
+
+.popular{
+  border:3px solid #0066cc;
+  transform:scale(1.05);
+}
+
+.faq{
+  background:#f7f9fc;
+}
+
+.faq-item{
+  margin-bottom:20px;
+}
+
+.faq-item h3{
+  color:#0066cc;
+  margin-bottom:10px;
+}
+
+.testimonial{
+  background:white;
+}
+
+.testimonial-card p{
+  font-style:italic;
+  margin-bottom:15px;
+}
+
+.testimonial-card h4{
+  color:#0066cc;
+}
+@media(max-width:992px){
+
+  .intro-grid,
+  .process-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .benefit-grid{
+    grid-template-columns:
+      repeat(auto-fit,minmax(320px,1fr)) !important;
+  }
+
+  .pricing-grid{
+    grid-template-columns:1fr;
+  }
+
+  .testimonial-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:768px){
+
+  .intro-grid,
+  .process-grid{
+    grid-template-columns:1fr;
+  }
+
+  .benefit-grid{
+    grid-template-columns:1fr !important;
+  }
+
+  .benefit-card{
+    padding:24px !important;
+  }
+
+  .benefit-card h3{
+    font-size:22px !important;
+    min-height:auto !important;
+  }
+
+  .section-heading h2{
+    font-size:32px;
+  }
+
+}
+
+.econtract-about{
+  padding:80px 0;
+  background:#f8fbff;
+}
+
+.about-content{
+  max-width:1100px;
+  margin:auto;
+}
+
+.about-content h3{
+  font-size:34px;
+  color:#0066cc;
+  margin-bottom:25px;
+  text-align:center;
+}
+
+.about-content p{
+  font-size:18px;
+  line-height:1.9;
+  color:#444;
+  margin-bottom:20px;
+  text-align:justify;
+}

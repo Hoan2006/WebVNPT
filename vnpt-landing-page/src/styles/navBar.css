@@ -1,0 +1,227 @@
+/* ==========================
+   NAVBAR
+========================== */
+
+.navbar{
+  background:#0077cc;
+
+  position:sticky;
+  top:85px;
+
+  z-index:999;
+
+  box-shadow:
+    0 4px 15px rgba(
+      0,
+      119,
+      204,
+      .2
+    );
+}
+
+.navbar-container{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  position:relative;
+}
+
+/* ==========================
+   DESKTOP MENU
+========================== */
+
+.desktop-menu{
+  display:flex;
+
+  justify-content:center;
+  align-items:center;
+
+  gap:12px;
+
+  list-style:none;
+
+  padding:14px 0;
+  margin:0;
+}
+
+.desktop-menu li{
+  list-style:none;
+}
+
+.nav-link{
+  display:block;
+
+  color:#fff;
+
+  text-decoration:none;
+
+  font-size:15px;
+  font-weight:600;
+
+  padding:10px 18px;
+
+  border-radius:8px;
+
+  transition:.3s;
+}
+
+.nav-link:hover{
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .15
+    );
+}
+
+.nav-link.active{
+  background:#fff;
+
+  color:#0077cc;
+
+  font-weight:700;
+}
+
+/* ==========================
+   HAMBURGER
+========================== */
+
+.menu-toggle{
+  display:none;
+
+  border:none;
+  background:none;
+
+  color:#fff;
+
+  font-size:30px;
+
+  cursor:pointer;
+}
+
+/* ==========================
+   OVERLAY
+========================== */
+
+.menu-overlay{
+  position:fixed;
+
+  inset:0;
+
+  background:
+    rgba(
+      0,
+      0,
+      0,
+      .4
+    );
+
+  opacity:0;
+
+  visibility:hidden;
+
+  transition:.3s;
+
+  z-index:1000;
+}
+
+.menu-overlay.show{
+  opacity:1;
+  visibility:visible;
+}
+
+/* ==========================
+   SIDEBAR
+========================== */
+
+.mobile-sidebar{
+  position:fixed;
+
+  top:0;
+  left:-280px;
+
+  width:280px;
+  height:100vh;
+
+  background:#fff;
+
+  box-shadow:
+    0 0 25px rgba(
+      0,
+      0,
+      0,
+      .15
+    );
+
+  display:flex;
+  flex-direction:column;
+
+  padding:70px 20px 20px;
+
+  transition:.35s;
+
+  z-index:1001;
+}
+
+.mobile-sidebar.open{
+  left:0;
+}
+
+.mobile-sidebar a{
+  text-decoration:none;
+
+  color:#333;
+
+  font-size:16px;
+  font-weight:600;
+
+  padding:14px 0;
+
+  border-bottom:
+    1px solid #eee;
+}
+
+.mobile-sidebar a.active{
+  color:#0077cc;
+}
+
+.close-btn{
+  position:absolute;
+
+  top:15px;
+  right:15px;
+
+  border:none;
+  background:none;
+
+  font-size:28px;
+
+  cursor:pointer;
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media(max-width:768px){
+
+  .navbar{
+    top:auto;
+  }
+
+  .desktop-menu{
+    display:none;
+  }
+
+  .navbar-container{
+    justify-content:flex-start;
+    padding:10px 0;
+  }
+
+  .menu-toggle{
+    display:block;
+  }
+
+}

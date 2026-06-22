@@ -1,0 +1,46 @@
+.table-container {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+
+  box-shadow: 0 4px 15px rgba(0,0,0,.08);
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.custom-table th {
+  background: #0072ce;
+  color: white;
+  padding: 15px;
+}
+
+.custom-table td {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.custom-table tr:hover {
+  background: #f7fbff;
+}
+
+.btn-edit {
+  border: none;
+  padding: 8px 14px;
+  background: #0072ce;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.btn-delete {
+  border: none;
+  padding: 8px 14px;
+  background: #e53935;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}

@@ -1,0 +1,602 @@
+/* =========================
+   INTRO GRID
+========================= */
+
+.intro-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(auto-fit,minmax(520px,1fr));
+
+  gap:30px;
+
+  max-width:1200px;
+  margin:0 auto;
+}
+
+.info-card{
+  background:#fff;
+
+  border-radius:20px;
+
+  padding:35px;
+
+  display:flex;
+  align-items:flex-start;
+  gap:25px;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.08);
+
+  transition:.3s;
+}
+
+.info-card:hover{
+  transform:translateY(-6px);
+}
+
+.info-card h3{
+  width:220px;
+  min-width:220px;
+
+  margin:0;
+
+  color:#cc0000;
+
+  font-size:30px;
+  line-height:1.3;
+  font-weight:700;
+}
+
+.info-card p{
+  flex:1;
+
+  margin:0;
+
+  color:#555;
+
+  font-size:17px;
+  line-height:1.8;
+}
+
+.highlight-text{
+    color:#cc0000;
+    font-weight:700;
+  }
+
+  /* =========================
+    BANNER IMAGE ONLY
+  ========================= */
+
+  .banner-image{
+    width:100%;
+  }
+
+  .banner-image img{
+    width:100%;
+    height:auto;
+    display:block;
+  }
+  /* =========================
+    INTRO
+  ========================= */
+
+  .intro-sale{
+    padding:70px 0;
+    text-align:center;
+  }
+
+  .intro-sale h2{
+    font-size:36px;
+    color:#ff6600;
+    margin-bottom:15px;
+  }
+
+  .intro-sale p{
+    max-width:700px;
+    margin:auto;
+    color:#555;
+    font-size:18px;
+  }
+
+  /* =========================
+    GRID CARD
+  ========================= */
+
+.grid-3{
+  display:grid;
+
+  grid-template-columns:
+    repeat(auto-fit,minmax(320px,1fr));
+
+  gap:25px;
+
+  max-width:1200px;
+  margin:auto;
+}
+
+  .card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    text-align:center;
+  }
+
+  /* =========================
+    PRICING
+  ========================= */
+
+  .pricing{
+    padding:80px 0;
+    background:#f7f9fc;
+    text-align:center;
+  }
+
+  .pricing h2{
+    font-size:36px;
+    margin-bottom:30px;
+    color:#ff6600;
+  }
+
+  .price-card{
+  background:#fff;
+
+  padding:35px 30px;
+
+  border-radius:20px;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.08);
+
+  transition:.3s;
+
+  display:flex;
+  flex-direction:column;
+
+  height:100%;
+}
+
+  .price-card.highlight{
+    border:3px solid #ff6600;
+  }
+
+  /* =========================
+    FORM
+  ========================= */
+
+  /* =========================
+   CONTACT FORM
+========================= */
+
+.hkd-contact-section{
+  padding:100px 0;
+
+  background:linear-gradient(
+    135deg,
+    #0072ce,
+    #00a9ff
+  );
+
+  position:relative;
+  overflow:hidden;
+}
+
+.hkd-contact-section::before{
+  content:"";
+
+  position:absolute;
+
+  width:420px;
+  height:420px;
+
+  border-radius:50%;
+
+  background:
+    rgba(255,255,255,.08);
+
+  top:-120px;
+  right:-120px;
+}
+
+.hkd-contact-section::after{
+  content:"";
+
+  position:absolute;
+
+  width:300px;
+  height:300px;
+
+  border-radius:50%;
+
+  background:
+    rgba(255,255,255,.08);
+
+  bottom:-120px;
+  left:-120px;
+}
+
+.contact-wrapper{
+  max-width:800px;
+  margin:auto;
+}
+
+  .container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+  }
+
+  /* SECTION */
+
+  .intro-section,
+  .benefits-section,
+  .promotion-section,
+  .pricing-section{
+    padding:60px 0;
+  }
+
+  .section-header{
+    text-align:center;
+    margin-bottom:40px;
+  }
+
+  .section-header h2{
+    font-size:40px;
+    color:#0066cc;
+    margin-bottom:20px;
+  }
+
+  .decision-text{
+    max-width:900px;
+    margin:auto;
+    font-size:18px;
+    line-height:1.8;
+    color:#444;
+  }
+
+  /* CARD CHUNG */
+
+
+  .benefit-card h3,
+  .promo-card h3{
+    font-size:22px;
+    line-height:1.5;
+    min-height:66px;
+    font-weight:700;
+  }
+
+
+  .info-card:hover,
+  .promo-card:hover{
+    transform:translateY(-6px);
+  }
+
+  .price-card:hover{
+  transform:translateY(-6px);
+
+  box-shadow:
+    0 15px 35px rgba(0,0,0,.12);
+}
+ 
+  .benefit-card:hover{
+  transform:translateY(-6px);
+
+  box-shadow:
+    0 15px 35px rgba(0,0,0,.12);
+}
+
+  .benefit-card h3,
+  .promo-card h3{
+    color:#010203;
+    margin-bottom:15px;
+  }
+
+  .price-card h3{
+  color:#0066cc;
+
+  font-size:24px;
+  font-weight:700;
+
+  line-height:1.4;
+
+  margin-bottom:15px;
+}
+
+  /* BENEFIT */
+
+  .benefits-section{
+    background:#f8fafc;
+  }
+
+  .benefits-section h2{
+    text-align:center;
+    margin-bottom:40px;
+    font-size:38px;
+    color:#0066cc;
+  }
+
+  /* PROMOTION */
+
+  .promotion-section h2{
+    text-align:center;
+    margin-bottom:40px;
+    font-size:38px;
+    color:#0066cc;
+  }
+
+  /* PRICE */
+
+  .pricing-section{
+    background:#f8fafc;
+  }
+
+  .pricing-section h2{
+    text-align:center;
+    margin-bottom:40px;
+    font-size:38px;
+    color:#0066cc;
+  }
+
+  .featured{
+    border:3px solid #0066cc;
+    transform:scale(1.03);
+  }
+
+.price-card span{
+  margin-top:auto;
+
+  padding-top:20px;
+
+  font-size:32px;
+  font-weight:800;
+
+  color:#cc0000;
+}
+
+.featured{
+  border:3px solid #0066cc;
+}
+
+  /* FORM */
+
+  .form-section{
+    padding:70px 0;
+    background:linear-gradient(
+      135deg,
+      #ff6600,
+      #ff9900
+    );
+  }
+ 
+  .form-section h2{
+    text-align:center;
+    color:#fff;
+    margin-bottom:25px;
+  }
+
+  .form-section form{
+    max-width:700px;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+  }
+
+  .form-section input,
+  .form-section textarea{
+    padding:15px;
+    border:none;
+    border-radius:12px;
+  }
+
+  .form-section button{
+    height:55px;
+    border:none;
+    border-radius:12px;
+    background:#0000ff;
+    color:#fff;
+    font-weight:700;
+    cursor:pointer;
+  }
+
+  /* MOBILE */
+
+@media(max-width:992px){
+
+  .intro-grid{
+    grid-template-columns:1fr;
+  }
+
+  .grid-2{
+    grid-template-columns:1fr;
+  }
+
+  .grid-3{
+    grid-template-columns:
+      repeat(auto-fit,minmax(280px,1fr));
+  }
+
+}
+
+@media(max-width:768px){
+
+  .section-header h2,
+  .benefits-section h2,
+  .promotion-section h2,
+  .pricing-section h2{
+    font-size:30px;
+  }
+
+  .decision-text,
+  .promo-desc{
+    font-size:16px;
+  }
+
+  .info-card{
+    flex-direction:column;
+    gap:18px;
+  }
+
+  .info-card h3{
+    width:100%;
+    min-width:100%;
+
+    font-size:24px;
+  }
+
+  .benefit-card,
+  .promo-card,
+  .price-card{
+    padding:24px;
+  }
+
+}
+
+@media(max-width:480px){
+
+  .intro-grid,
+  .grid-2,
+  .grid-3{
+    gap:18px;
+  }
+
+  .benefit-card h3,
+  .promo-card h3,
+  .price-card h3{
+    font-size:20px;
+  }
+
+  .promo-icon{
+    font-size:40px;
+  }
+
+  .price-card span{
+    font-size:28px;
+  }
+
+}
+
+.grid-2{
+  display:grid;
+
+  grid-template-columns:
+    repeat(auto-fit,minmax(350px,1fr));
+
+  gap:25px;
+}
+
+.benefit-card{
+  background:#fff;
+
+  padding:32px;
+
+  border-radius:20px;
+
+  border-top:5px solid #0066cc;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.08);
+
+  transition:.3s;
+
+  display:flex;
+  flex-direction:column;
+}
+
+.benefit-card h3{
+  color:#0066cc;
+
+  font-size:24px;
+  font-weight:700;
+
+  line-height:1.4;
+
+  margin-bottom:18px;
+}
+
+.benefit-card p{
+  color:#555;
+
+  line-height:1.8;
+  font-size:16px;
+}
+
+.promo-desc{
+  max-width:900px;
+  margin:0 auto 40px;
+  text-align:center;
+
+  font-size:18px;
+  line-height:1.8;
+
+  color:#555;
+}
+
+.promo-card{
+  background:#fff;
+
+  padding:35px 28px;
+
+  border-radius:20px;
+
+  text-align:center;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.08);
+
+  transition:.3s;
+
+  display:flex;
+  flex-direction:column;
+}
+
+/* =========================
+   PROMO ICON CENTER
+========================= */
+
+.promo-icon{
+  width:80px !important;
+  height:80px !important;
+
+  margin:0 auto 20px !important;
+
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+
+  border-radius:50% !important;
+
+  background:#fff3eb !important;
+
+  font-size:42px !important;
+
+  color:#ff6600 !important;
+}
+
+.promo-card:hover .promo-icon{
+  transform:scale(1.08);
+  transition:.3s;
+}
+
+.promo-card h3{
+  color:#cc0000;
+
+  font-size:26px;
+  font-weight:800;
+
+  line-height:1.4;
+
+  margin-bottom:10px;
+}
+
+.promo-card h3 span{
+  display:block;
+
+  margin-top:8px;
+
+  color:#333;
+
+  font-size:18px;
+  font-weight:600;
+}

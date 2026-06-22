@@ -1,0 +1,145 @@
+/* ==========================
+   HERO SLIDER
+========================== */
+
+.hero-slider {
+  width: 100%;
+  overflow: hidden;
+}
+
+.hero-image-container {
+  position: relative;
+  width: 100%;
+  height: 500px; /* chỉnh theo ý */
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center center;
+
+  display: block;
+
+  transition: all 0.4s ease;
+}
+
+/* ==========================
+   ARROWS
+========================== */
+
+.hero-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 55px;
+  height: 55px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+
+  font-size: 26px;
+  font-weight: bold;
+
+  cursor: pointer;
+  z-index: 10;
+
+  transition: 0.3s;
+}
+
+.hero-arrow:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.hero-arrow-left {
+  left: 25px;
+}
+
+.hero-arrow-right {
+  right: 25px;
+}
+
+/* ==========================
+   DOTS
+========================== */
+
+.hero-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 25px;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  gap: 10px;
+
+  z-index: 10;
+}
+
+.hero-dot {
+  width: 12px;
+  height: 12px;
+
+  border-radius: 50%;
+  cursor: pointer;
+
+  background: rgba(255, 255, 255, 0.6);
+
+  transition: 0.3s;
+}
+
+.hero-dot:hover {
+  transform: scale(1.15);
+}
+
+.hero-dot.active {
+  width: 28px;
+  border-radius: 30px;
+  background: #0077cc;
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media (max-width: 1200px) {
+  .hero-image-container {
+    height: 420px;
+  }
+}
+
+@media (max-width: 992px) {
+  .hero-image-container {
+    height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-image-container {
+    height: 250px;
+  }
+
+  .hero-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .hero-arrow-left {
+    left: 10px;
+  }
+
+  .hero-arrow-right {
+    right: 10px;
+  }
+
+  .hero-dots {
+    bottom: 15px;
+  }
+}
