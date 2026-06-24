@@ -27,11 +27,12 @@ import AdminLogin from "./pages/AdminLogin";
 import ProtectedRoute 
 from "./components/ProtectedRoute";
 
-
 import {
  AuthProvider
 }
 from "./context/AuthContext";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -122,6 +123,15 @@ function App() {
             />
 
         </Routes>
+
+        <ToastContainer
+          position="top-right"
+          autoClose={2500}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          pauseOnHover
+        />
 
         <RegisterModal />
       </BrowserRouter>

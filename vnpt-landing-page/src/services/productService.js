@@ -35,7 +35,7 @@ export const updateProduct = async (
     productData
   );
 };
-
+ 
 /* Xóa sản phẩm */
 export const deleteProduct = async (
   id
@@ -43,4 +43,27 @@ export const deleteProduct = async (
   return await axios.delete(
     `${API_URL}/${id}`
   );
-};
+}; 
+
+export const uploadImage =
+  async (file) => {
+
+    const formData =
+      new FormData();
+
+    formData.append(
+      "image",
+      file
+    );
+
+    return await axios.post(
+      "http://localhost:5000/api/upload",
+      formData,
+      {
+        headers: {
+          "Content-Type":
+            "multipart/form-data",
+        },
+      }
+    );
+  };

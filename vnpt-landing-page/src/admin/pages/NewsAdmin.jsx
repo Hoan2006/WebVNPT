@@ -5,7 +5,8 @@ import {
 
 import AdminLayout
 from "../components/AdminLayout";
-
+import { toast } from "react-toastify";
+import NewsModal from "../components/NewsModal";
 import {
   getNews,
   createNews,
@@ -27,24 +28,16 @@ function NewsAdmin(){
   const [showModal,setShowModal] =
   useState(false);
 
-  const [editingId,setEditingId] =
+  const [editingNews,setEditingNews] =
+  useState(null);
+
+  const [deleteId,setDeleteId] =
   useState(null);
 
   const [page,setPage] =
   useState(1);
 
   const limit = 5;
-
-  const [form,setForm] =
-  useState({
-    title:"",
-    date:"",
-    author:"",
-    image:"",
-    category:"",
-    excerpt:"",
-    content:""
-  });
 
   useEffect(() => {
     loadNews();
@@ -64,85 +57,23 @@ function NewsAdmin(){
 
   };
 
-  const handleChange =
-  (e) => {
-
-    setForm({
-      ...form,
-      [e.target.name]:
-      e.target.value
-    });
-
-  };
-
   const handleAdd = () => {
-
-    setEditingId(null);
-
-    setForm({
-      title:"",
-      date:"",
-      author:"",
-      image:"",
-      category:"",
-      excerpt:"",
-      content:""
-    });
-
+    setEditingNews(null);
     setShowModal(true);
-
   };
 
   const handleEdit =
   (item) => {
 
-    setEditingId(item._id);
-
-    setForm(item);
+    setEditingNews(item);
 
     setShowModal(true);
 
   };
 
-  const handleSave =
-  async () => {
-
-    if(editingId){
-
-      await updateNews(
-        editingId,
-        form
-      );
-
-    }
-    else{
-
-      await createNews(
-        form
-      );
-
-    }
-
-    setShowModal(false);
-
-    loadNews();
-
-  };
-
   const handleDelete =
-  async(id) => {
-
-    const ok =
-    window.confirm(
-      "Xóa bài viết?"
-    );
-
-    if(!ok) return;
-
-    await deleteNews(id);
-
-    loadNews();
-
+  (id) => {
+    setDeleteId(id);
   };
 
   const filtered =
@@ -153,6 +84,35 @@ function NewsAdmin(){
       search.toLowerCase()
     )
   );
+
+  const confirmDelete =
+  async () => {
+
+    try {
+
+      await deleteNews(
+        deleteId
+      );
+
+      toast.success(
+        "Xóa bài viết thành công"
+      );
+
+      loadNews();
+
+    } catch(error){
+
+      toast.error(
+        "Xóa bài viết thất bại"
+      );
+
+    } finally {
+
+      setDeleteId(null);
+
+    }
+
+  };
 
   const start =
   (page - 1) * limit;
@@ -315,103 +275,66 @@ function NewsAdmin(){
       </div>
 
       {showModal && (
+        <NewsModal
+          news={editingNews}
+          onClose={() =>
+            setShowModal(false)
+          }
+          onSuccess={() => {
+            loadNews();
+            setShowModal(false);
+          }}
+        />
+      )}
 
-        <div className="modal">
+      {
+        deleteId && (
 
-          <div className="modal-content">
+          <div className="confirm-overlay">
 
-            <h2>
-              {editingId
-              ? "Cập nhật bài viết"
-              : "Thêm bài viết"}
-            </h2>
+            <div className="confirm-modal">
 
-            <input
-              name="title"
-              placeholder="Tiêu đề"
-              value={form.title}
-              onChange={handleChange}
-            />
+              <div className="confirm-icon">
+                🗑️
+              </div>
 
-            <input
-              name="date"
-              placeholder="Ngày đăng"
-              value={form.date}
-              onChange={handleChange}
-            />
+              <h3>
+                Xóa bài viết
+              </h3>
 
-            <input
-              name="author"
-              placeholder="Tác giả"
-              value={form.author}
-              onChange={handleChange}
-            />
+              <p>
+                Bạn có chắc muốn xóa
+                bài viết này không?
+              </p>
 
-            <input
-              name="image"
-              placeholder="URL ảnh"
-              value={form.image}
-              onChange={handleChange}
-            />
+              <div className="confirm-actions">
 
-            {
-              form.image && (
-                <div className="image-preview">
+                <button
+                  className="cancel-delete"
+                  onClick={() =>
+                    setDeleteId(null)
+                  }
+                >
+                  Hủy
+                </button>
 
-                  <img
-                    src={form.image}
-                    alt=""
-                  />
+                <button
+                  className="confirm-delete"
+                  onClick={
+                    confirmDelete
+                  }
+                >
+                  Xóa
+                </button>
 
-                </div>
-              )
-            }
-
-            <input
-              name="category"
-              placeholder="Chuyên mục"
-              value={form.category}
-              onChange={handleChange}
-            />
-
-            <textarea
-              name="excerpt"
-              placeholder="Mô tả ngắn"
-              value={form.excerpt}
-              onChange={handleChange}
-            />
-
-            <textarea
-              name="content"
-              rows="12"
-              placeholder="Nội dung HTML"
-              value={form.content}
-              onChange={handleChange}
-            />
-
-            <div className="modal-actions">
-
-              <button
-                onClick={handleSave}
-              >
-                Lưu
-              </button>
-
-              <button
-                onClick={() =>
-                  setShowModal(false)
-                }
-              >
-                Hủy
-              </button>
+              </div>
 
             </div>
 
           </div>
 
-        </div>
-
-      )}
+        )
+      }
 
     </AdminLayout>
   );

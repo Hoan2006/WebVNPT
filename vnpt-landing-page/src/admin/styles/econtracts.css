@@ -90,7 +90,7 @@
   border-radius: 8px;
 }
 
-.pagination {
+.pagination { 
   display: flex;
   justify-content: center;
   gap: 15px;
@@ -103,4 +103,244 @@
   background: #0072ce;
   color: white;
   border-radius: 8px;
+}
+
+/* hover table */
+
+.econtracts-table tbody tr{
+  transition:.25s;
+}
+
+.econtracts-table tbody tr:hover{
+  background:#f7fbff;
+}
+
+/* modal */
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  z-index:999;
+}
+
+.econtract-modal{
+  width:850px;
+  max-height:90vh;
+  overflow-y:auto;
+
+  background:#fff;
+  border-radius:18px;
+  padding:30px;
+
+  box-shadow:
+  0 20px 60px
+  rgba(0,0,0,.18);
+}
+
+.econtract-modal input{
+  width:100%;
+  padding:12px;
+  border:1px solid #ddd;
+  border-radius:10px;
+  margin-top:10px;
+}
+
+.econtract-modal h2{
+  margin-bottom:20px;
+}
+
+.modal-actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:12px;
+  margin-top:25px;
+}
+
+.modal-actions button{
+  border:none;
+  padding:12px 20px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+/* confirm delete */
+
+.confirm-overlay{
+  position:fixed;
+  inset:0;
+
+  background:
+  rgba(0,0,0,.45);
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  z-index:2000;
+}
+
+.confirm-modal{
+  width:420px;
+
+  background:white;
+
+  border-radius:18px;
+
+  padding:30px;
+
+  text-align:center;
+
+  box-shadow:
+  0 20px 60px
+  rgba(0,0,0,.2);
+}
+
+.confirm-icon{
+  font-size:50px;
+  margin-bottom:15px;
+}
+
+.confirm-modal h3{
+  margin-bottom:10px;
+}
+
+.confirm-modal p{
+  color:#666;
+  margin-bottom:25px;
+}
+
+.confirm-actions{
+  display:flex;
+  gap:12px;
+}
+
+.confirm-actions button{
+  flex:1;
+  border:none;
+  padding:12px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.cancel-confirm{
+  background:#f1f3f5;
+}
+
+.delete-confirm{
+  background:#ff4d4f;
+  color:white;
+}
+
+.delete-confirm:hover{
+  background:#e53935;
+}
+
+/* button hover */
+
+.add-btn:hover,
+.edit-btn:hover{
+  opacity:.9;
+  transform:translateY(-1px);
+}
+
+.delete-btn:hover{
+  background:#e53935;
+}
+
+/* form */
+
+.form-group{
+  margin-bottom:18px;
+}
+
+.form-group label{
+  display:block;
+  font-size:14px;
+  font-weight:600;
+  color:#333;
+  margin-bottom:8px;
+}
+
+.form-group input,
+.form-group textarea{
+  width:100%;
+  border:1px solid #d9d9d9;
+  border-radius:10px;
+  padding:12px 14px;
+  font-size:14px;
+  outline:none;
+  transition:.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
+  border-color:#0072ce;
+  box-shadow:
+  0 0 0 3px
+  rgba(0,114,206,.12);
+}
+
+.form-group textarea{
+  resize:vertical;
+}
+
+.checkbox-group{
+  margin-top:20px;
+}
+
+.checkbox-group label{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:0;
+  cursor:pointer;
+}
+
+.checkbox-group input{
+  width:auto;
+}
+
+.feature-section{
+  margin-top:25px;
+  padding-top:20px;
+  border-top:1px solid #eee;
+}
+
+.feature-section h3{
+  margin-bottom:15px;
+  color:#0072ce;
+}
+
+.feature-row{
+  display:flex;
+  gap:10px;
+  margin-bottom:10px;
+}
+
+.feature-row input{
+  flex:1;
+}
+
+.save-btn{
+  background:#0072ce;
+  color:white;
+}
+
+.save-btn:hover{
+  background:#005bb5;
+}
+
+.cancel-btn{
+  background:#f1f3f5;
+}
+
+.cancel-btn:hover{
+  background:#e9ecef;
 }

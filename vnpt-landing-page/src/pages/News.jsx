@@ -10,6 +10,10 @@ import "../styles/news.css";
 function News() {
 
   const [news, setNews] = useState([]);
+  const [currentPage, setCurrentPage] =
+    useState(1);
+
+  const newsPerPage = 6;
 
   useEffect(() => {
 
@@ -23,6 +27,37 @@ function News() {
       });
 
   }, []);
+
+  const indexOfLastNews =
+    currentPage * newsPerPage;
+
+  const indexOfFirstNews =
+    indexOfLastNews - newsPerPage;
+
+  const currentNews =
+    news.slice(
+      indexOfFirstNews,
+      indexOfLastNews
+    );
+
+  const totalPages =
+    Math.max(
+      1,
+      Math.ceil(
+        news.length / newsPerPage
+      )
+    );
+
+  const paginate = (pageNumber) => {
+
+    setCurrentPage(pageNumber);
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+
+  };
 
   return (
     <>
@@ -39,7 +74,7 @@ function News() {
 
           <div className="news-grid">
 
-            {news.map((item) => (
+            {currentNews.map((item) => (
 
               <Link
                 to={`/tin-tuc/${item._id}`}
@@ -74,10 +109,57 @@ function News() {
 
           </div>
 
+          <div className="pagination">
+
+            <button
+              className="page-btn"
+              disabled={currentPage === 1}
+              onClick={() =>
+                paginate(currentPage - 1)
+              }
+            >
+              ←
+            </button>
+
+            {[...Array(
+              totalPages || 1
+            )].map((_, index) => (
+
+              <button
+                key={index}
+                className={
+                  currentPage === index + 1
+                    ? "page-btn active"
+                    : "page-btn"
+                }
+                onClick={() =>
+                  paginate(index + 1)
+                }
+              >
+                {index + 1}
+              </button>
+
+            ))}
+
+            <button
+              className="page-btn"
+              disabled={
+                currentPage === totalPages ||
+                totalPages === 0
+              }
+              onClick={() =>
+                paginate(currentPage + 1)
+              }
+            >
+              →
+            </button>
+
+          </div>
+
         </div>
 
       </section>
-
+ 
       <Footer />
     </>
   );

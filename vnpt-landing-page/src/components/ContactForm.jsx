@@ -6,6 +6,7 @@ function ContactForm() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
   const [content, setContent] = useState("");
 
   const [errors, setErrors] = useState({});
@@ -49,6 +50,11 @@ function ContactForm() {
         "Email không đúng định dạng";
     }
 
+    if (!address.trim()) {
+      newErrors.address =
+        "Vui lòng nhập địa chỉ";
+    }
+
     if (!content.trim()) {
       newErrors.content =
         "Vui lòng nhập nội dung tư vấn";
@@ -87,13 +93,15 @@ function ContactForm() {
             name,
             phone,
             email,
+            address,
             content,
           }),
         }
       );
 
-      const data =
-        await response.json();
+      const data = await response.json();
+
+console.log("SERVER:", data);
 
       if (data.success) {
 
@@ -104,6 +112,7 @@ function ContactForm() {
         setName("");
         setPhone("");
         setEmail("");
+        setAddress("");
         setContent("");
         setErrors({});
 
@@ -236,7 +245,7 @@ function ContactForm() {
                 e.target.value
               );
 
-              setErrors({
+              setErrors({ 
                 ...errors,
                 email: "",
               });
@@ -247,6 +256,39 @@ function ContactForm() {
           {errors.email && (
             <span className="error-text">
               {errors.email}
+            </span>
+          )}
+
+        </div>
+
+        <div className="form-group">
+
+          <input
+            type="text"
+            placeholder="Địa chỉ"
+            value={address}
+            className={
+              errors.address
+                ? "input-error"
+                : ""
+            }
+            onChange={(e) => {
+
+              setAddress(
+                e.target.value
+              );
+
+              setErrors({
+                ...errors,
+                address: "",
+              });
+
+            }}
+          />
+
+          {errors.address && (
+            <span className="error-text">
+              {errors.address}
             </span>
           )}
 

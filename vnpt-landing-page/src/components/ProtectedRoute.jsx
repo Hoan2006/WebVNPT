@@ -8,16 +8,9 @@ import {
 }
 from "../context/AuthContext";
 
-
-
 function ProtectedRoute({children}){
-
-
  const {admin} =
  useAuth();
-
-
-
  if(!admin){
 
    return (
@@ -29,11 +22,7 @@ function ProtectedRoute({children}){
 
  }
 
-
-
  return children;
-
-
 }
 
 

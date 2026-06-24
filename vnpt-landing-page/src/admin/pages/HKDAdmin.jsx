@@ -11,7 +11,7 @@ import {
   updateHKD,
   deleteHKD,
 } from "../../services/hkdService";
-
+import { toast } from "react-toastify";
 import "../styles/hkds.css";
 
 function HKDAdmin() {
@@ -25,6 +25,9 @@ function HKDAdmin() {
     useState(false);
 
   const [editingId, setEditingId] =
+    useState(null);
+
+  const [deleteId, setDeleteId] =
     useState(null);
 
   const [page, setPage] =
@@ -47,7 +50,7 @@ function HKDAdmin() {
     setPage(1);
   }, [search]);
 
-  const loadData =
+  const loadData = 
     async () => {
       const res =
         await getHKDs();
@@ -104,34 +107,78 @@ function HKDAdmin() {
 
   const handleSave =
     async () => {
-      if (editingId) {
-        await updateHKD(
-          editingId,
-          form
+
+      try {
+
+        if (editingId) {
+
+          await updateHKD(
+            editingId,
+            form
+          );
+
+          toast.success(
+            "Cập nhật gói thành công"
+          );
+
+        } else {
+
+          await createHKD(
+            form
+          );
+
+          toast.success(
+            "Thêm gói thành công"
+          );
+
+        }
+
+        setShowModal(false);
+
+        loadData();
+
+      } catch (error) {
+
+        toast.error(
+          "Có lỗi xảy ra"
         );
-      } else {
-        await createHKD(
-          form
-        );
+
       }
 
-      setShowModal(false);
-
-      loadData();
     };
 
   const handleDelete =
-    async (id) => {
-      const ok =
-        window.confirm(
-          "Xóa gói này?"
+    (id) => {
+
+      setDeleteId(id);
+
+    };
+
+  const confirmDelete =
+    async () => {
+
+      try {
+
+        await deleteHKD(
+          deleteId
         );
 
-      if (!ok) return;
+        toast.success(
+          "Xóa gói thành công"
+        );
 
-      await deleteHKD(id);
+        loadData();
 
-      loadData();
+      } catch (error) {
+
+        toast.error(
+          "Xóa gói thất bại"
+        );
+
+      }
+
+      setDeleteId(null);
+
     };
 
   const filtered =
@@ -304,7 +351,7 @@ function HKDAdmin() {
 
           <div className="modal">
 
-            <div className="modal-content">
+            <div className="modal-content hkd-modal">
 
               <h2>
                 {editingId
@@ -312,48 +359,61 @@ function HKDAdmin() {
                   : "Thêm gói"}
               </h2>
 
-              <input
-                name="title"
-                placeholder="Tên gói"
-                value={
-                  form.title
-                }
-                onChange={
-                  handleChange
-                }
-              />
+              <div className="form-group">
 
-              <input
-                name="price"
-                placeholder="Giá"
-                value={
-                  form.price
-                }
-                onChange={
-                  handleChange
-                }
-              />
-
-              <label>
+                <label>
+                  Tên gói
+                </label>
 
                 <input
-                  type="checkbox"
-                  name="featured"
-                  checked={
-                    form.featured
-                  }
-                  onChange={
-                    handleChange
-                  }
+                  name="title"
+                  placeholder="Nhập tên gói"
+                  value={form.title}
+                  onChange={handleChange}
                 />
 
-                Gói nổi bật
+              </div>
 
-              </label>
+              <div className="form-group">
+
+                <label>
+                  Giá
+                </label>
+
+                <input
+                  name="price"
+                  placeholder="Ví dụ: 199.000đ"
+                  value={form.price}
+                  onChange={handleChange}
+                />
+
+              </div>
+
+              <div className="form-group checkbox-group">
+
+                <label>
+
+                  <input
+                    type="checkbox"
+                    name="featured"
+                    checked={
+                      form.featured
+                    }
+                    onChange={
+                      handleChange
+                    }
+                  />
+
+                  Gói nổi bật
+
+                </label>
+
+              </div>
 
               <div className="modal-actions">
 
                 <button
+                  className="save-btn"
                   onClick={
                     handleSave
                   }
@@ -362,6 +422,7 @@ function HKDAdmin() {
                 </button>
 
                 <button
+                  className="cancel-btn"
                   onClick={() =>
                     setShowModal(
                       false
@@ -369,6 +430,52 @@ function HKDAdmin() {
                   }
                 >
                   Hủy
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        )}
+
+        {deleteId && (
+
+          <div className="confirm-overlay">
+
+            <div className="confirm-modal">
+
+              <div className="confirm-icon">
+                🗑️
+              </div>
+
+              <h3>
+                Xóa gói?
+              </h3>
+
+              <p>
+                Hành động này không thể hoàn tác.
+              </p>
+
+              <div className="confirm-actions">
+
+                <button
+                  className="cancel-confirm"
+                  onClick={() =>
+                    setDeleteId(null)
+                  }
+                >
+                  Hủy
+                </button>
+
+                <button
+                  className="delete-confirm"
+                  onClick={
+                    confirmDelete
+                  }
+                >
+                  Xóa
                 </button>
 
               </div>

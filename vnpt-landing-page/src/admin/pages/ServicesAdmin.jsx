@@ -4,7 +4,11 @@ import {
 } from "react";
 
 import AdminLayout from "../components/AdminLayout";
+import { toast }
+from "react-toastify";
 
+import ServiceModal
+from "../components/ServiceModal";
 import {
   getServices,
   createService,
@@ -32,6 +36,14 @@ function ServicesAdmin() {
   const [editingId, setEditingId] =
     useState(null);
 
+  const [editingService,
+  setEditingService] =
+  useState(null);
+
+  const [deleteId,
+  setDeleteId] =
+  useState(null);
+
   const [form, setForm] =
     useState({
       title: "",
@@ -39,7 +51,7 @@ function ServicesAdmin() {
       image: "",
       features:[""]
     });
-
+ 
   useEffect(() => {
     loadServices();
   }, []);
@@ -65,16 +77,13 @@ function ServicesAdmin() {
   };
 
   const handleAdd = () => {
-    setEditingId(null);
 
-    setForm({
-      title: "",
-      description: "",
-      image: "",
-      features: [""],
-    });
+    setEditingService(
+      null
+    );
 
     setShowModal(true);
+
   };
 
   /* Start feature service admin */
@@ -119,20 +128,15 @@ function ServicesAdmin() {
 
   };
   /* End feature service admin */
-  const handleEdit = (
-    service
-  ) => {
-    setEditingId(service._id);
+ const handleEdit =
+  (service) => {
 
-    setForm({
-      title:service.title,
-      description:service.description,
-      image:service.image,
-      features:
-        service.features || [""]
-    });
+    setEditingService(
+      service
+    );
 
     setShowModal(true);
+
   };
 
   const handleSave =
@@ -154,18 +158,40 @@ function ServicesAdmin() {
     };
 
   const handleDelete =
-    async (id) => {
-      const ok =
-        window.confirm(
-          "Xóa dịch vụ này?"
-        );
+  (id) => {
 
-      if (!ok) return;
+    setDeleteId(id);
 
-      await deleteService(id);
+  };
+
+  const confirmDelete =
+  async () => {
+
+    try {
+
+      await deleteService(
+        deleteId
+      );
+
+      toast.success(
+        "Xóa dịch vụ thành công"
+      );
 
       loadServices();
-    };
+
+    } catch(error){
+
+      toast.error(
+        "Xóa dịch vụ thất bại"
+      );
+
+    } finally {
+
+      setDeleteId(null);
+
+    }
+
+  };
 
   const filtered =
     services.filter((item) =>
@@ -323,132 +349,78 @@ function ServicesAdmin() {
           </button>
         </div>
 
-        {showModal && (
-          <div className="modal">
-            <div className="modal-content">
-              <h2>
-                {editingId
-                  ? "Cập nhật dịch vụ"
-                  : "Thêm dịch vụ"}
-              </h2>
+        {
+          showModal && (
 
-              <input
-                name="title"
-                placeholder="Tên dịch vụ"
-                value={form.title}
-                onChange={
-                  handleChange
-                }
-              />
+            <ServiceModal
+              service={
+                editingService
+              }
+              onClose={() =>
+                setShowModal(false)
+              }
+              onSuccess={() => {
 
-              <input
-                name="description"
-                placeholder="Mô tả"
-                value={
-                  form.description
-                }
-                onChange={
-                  handleChange
-                }
-              />
+                loadServices();
 
-              <input
-                name="image"
-                placeholder="URL ảnh"
-                value={form.image}
-                onChange={
-                  handleChange
-                }
-              />
+                setShowModal(
+                  false
+                );
 
-              {
-                form.image && (
-                  <div
-                    className="image-preview"
+              }}
+            />
+
+          )
+        }
+
+        {
+          deleteId && (
+
+            <div className="confirm-overlay">
+
+              <div className="confirm-modal">
+
+                <div className="confirm-icon">
+                  🗑️
+                </div>
+
+                <h3>
+                  Xóa dịch vụ
+                </h3>
+
+                <p>
+                  Bạn có chắc muốn
+                  xóa dịch vụ này?
+                </p>
+
+                <div className="confirm-actions">
+
+                  <button
+                    className="cancel-delete"
+                    onClick={() =>
+                      setDeleteId(null)
+                    }
                   >
-                    <img
-                      src={form.image}
-                      alt=""
-                    />
-                  </div>
-                )
-              }
+                    Hủy
+                  </button>
 
-              <h3>
-                Danh sách tính năng
-              </h3>
+                  <button
+                    className="confirm-delete"
+                    onClick={
+                      confirmDelete
+                    }
+                  >
+                    Xóa
+                  </button>
 
-              {
-                form.features?.map(
-                  (
-                    feature,
-                    index
-                  ) => (
-                    <div
-                      key={index}
-                      className="feature-row"
-                    >
-                      <input
-                        value={feature}
-                        placeholder={`Tính năng ${
-                          index + 1
-                        }`}
-                        onChange={(
-                          e
-                        ) =>
-                          handleFeatureChange(
-                            index,
-                            e.target.value
-                          )
-                        }
-                      />
+                </div>
 
-                      <button
-                        type="button"
-                        className="delete-feature"
-                        onClick={() =>
-                          removeFeature(
-                            index
-                          )
-                        }
-                      >
-                        X
-                      </button>
-                    </div>
-                  )
-                )
-              }
-
-              <button
-                type="button"
-                className="add-feature"
-                onClick={addFeature}
-              >
-                + Thêm tính năng
-              </button>
-
-              <div className="modal-actions">
-                <button
-                  onClick={
-                    handleSave
-                  }
-                >
-                  Lưu
-                </button>
-
-                <button
-                  onClick={() =>
-                    setShowModal(
-                      false
-                    )
-                  }
-                >
-                  Hủy
-                </button>
               </div>
+
             </div>
-          </div>
-        )}
+
+          )
+        }
       </div>
     </AdminLayout>
   );

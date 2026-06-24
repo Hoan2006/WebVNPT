@@ -54,7 +54,7 @@
 
 /* Mô tả - thu hẹp lại */
 .services-table th:nth-child(3){
-  width:300px;
+  width:300px; 
 }
 
 /* Tính năng - rộng hơn */

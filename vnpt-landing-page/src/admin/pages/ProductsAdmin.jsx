@@ -4,7 +4,7 @@ import {
 } from "react";
 
 import AdminLayout from "../components/AdminLayout";
-
+import { toast } from "react-toastify";
 import {
   getProducts,
   createProduct,
@@ -12,9 +12,15 @@ import {
   deleteProduct,
 } from "../../services/productService";
 
+import {
+  uploadImage
+} from "../../services/productService";
+
 import "../styles/products.css";
+import ProductModal from "../components/ProductModal";
 
 function ProductsAdmin() {
+
   const [products, setProducts] =
     useState([]);
 
@@ -29,28 +35,12 @@ function ProductsAdmin() {
 
   const limit = 5;
 
-  const [editingId, setEditingId] =
-    useState(null);
-
-  const [form, setForm] =
-  useState({
-    title:"",
-    description:"",
-    price:"",
-    image:"",
-    category:"",
-
-    cityPrice:"",
-    suburbPrice:"",
-    promotionPeriod:"",
-
-    promotion:"",
-    advantages:"",
-
-    urbanCoverage:"",
-    suburbanCoverage:""
-  });
-
+  const [editingProduct, setEditingProduct] =
+  useState(null);
+  
+  const [deleteId, setDeleteId] =
+  useState(null);
+  
   useEffect(() => {
     loadProducts();
   }, []);
@@ -67,149 +57,47 @@ function ProductsAdmin() {
       setProducts(res.data);
     };
 
-  const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]:
-        e.target.value,
-    });
-  };
-
   const handleAdd = () => {
-    setEditingId(null);
-
-    setForm({
-      title:"",
-      description:"",
-      price:"",
-      image:"",
-      category:"",
-
-      cityPrice:"",
-      suburbPrice:"",
-      promotionPeriod:"",
-
-      promotion:"",
-      advantages:"",
-
-      urbanCoverage:"",
-      suburbanCoverage:""
-    });
-
+    setEditingProduct(null);
     setShowModal(true);
   };
 
-  const handleEdit = (
-    product
-  ) => {
-    setEditingId(product._id);
-
-    setForm({
-      title:
-        product.title || "",
-
-      description:
-        product.description || "",
-
-      price:
-        product.price || "",
-
-      image:
-        product.image || "",
-
-      category:
-        product.category || "",
-
-      cityPrice:
-        product.cityPrice || "",
-
-      suburbPrice:
-        product.suburbPrice || "",
-
-      promotionPeriod:
-        product.promotionPeriod || "",
-
-      promotion:
-        product.promotion?.join("\n") || "",
-
-      advantages:
-        product.advantages?.join("\n") || "",
-
-      urbanCoverage:
-        product.coverage?.urban?.join("\n") || "",
-
-      suburbanCoverage:
-        product.coverage?.suburban?.join("\n") || ""
-    });
-
+  const handleEdit = (product) => {
+    setEditingProduct(product);
     setShowModal(true);
   };
 
-  const handleSave =
-    async () => {
-      const payload = {
-        title: form.title,
-        description: form.description,
-        price: form.price,
-        image: form.image,
-        category: form.category,
+  const handleDelete = (id) => {
+    setDeleteId(id);
+  };
 
-        cityPrice: form.cityPrice,
-        suburbPrice: form.suburbPrice,
-        promotionPeriod: form.promotionPeriod,
+  const confirmDelete = async () => {
 
-        promotion: (form.promotion || "")
-          .split("\n")
-          .filter(Boolean),
+    try {
 
-        advantages: (form.advantages || "")
-          .split("\n")
-          .filter(Boolean),
+      await deleteProduct(deleteId);
 
-        coverage:{
-          urban:(form.urbanCoverage || "")
-            .split("\n")
-            .filter(Boolean),
-
-          suburban:(form.suburbanCoverage || "")
-            .split("\n")
-            .filter(Boolean)
-        }
-      };
-
-      if(editingId){
-
-        await updateProduct(
-          editingId,
-          payload
-        );
-
-      }else{
-
-        await createProduct(
-          payload
-        );
-
-      }
-
-      setShowModal(false);
+      toast.success(
+        "Xóa gói thành công"
+      );
 
       loadProducts();
-    };
 
-  const handleDelete =
-    async (id) => {
-      const ok =
-        window.confirm(
-          "Xóa sản phẩm?"
-        );
+    } catch (error) {
 
-      if (!ok) return;
+      console.log(error);
 
-      await deleteProduct(id);
+      toast.error(
+        "Xóa gói thất bại"
+      );
 
-      loadProducts();
-    };
+    } finally {
+
+      setDeleteId(null);
+
+    }
+
+  };
 
   const filteredProducts =
     products.filter((p) =>
@@ -236,7 +124,7 @@ function ProductsAdmin() {
     <AdminLayout>
       <div className="products-page">
 
-        <div className="page-header">
+        <div className="page-header"> 
           <h1>
             Quản lý Gói khuyến mãi
           </h1>
@@ -319,7 +207,7 @@ function ProductsAdmin() {
                     onClick={() =>
                       handleEdit(item)
                     }
-                  >
+                  > 
                     Sửa
                   </button>
 
@@ -372,143 +260,66 @@ function ProductsAdmin() {
         </div>
 
         {showModal && (
-          <div className="modal">
-            <div className="modal-content">
-              <h2>
-                {editingId
-                  ? "Cập nhật"
-                  : "Thêm mới"}
-              </h2>
-
-              <input
-                name="title"
-                placeholder="Tên gói"
-                value={form.title}
-                onChange={
-                  handleChange
-                }
-              />
-
-              <input
-                name="description"
-                placeholder="Mô tả"
-                value={form.description}
-                onChange={handleChange}
-              />
-
-              <input
-                name="price"
-                placeholder="Giá"
-                value={form.price}
-                onChange={
-                  handleChange
-                }
-              />
-
-              <input
-                name="image"
-                placeholder="Ảnh"
-                value={form.image}
-                onChange={handleChange}
-              />
-
-              {
-                form.image && (
-
-                  <div className="image-preview">
-
-                    <img
-                      src={form.image}
-                      alt=""
-                    />
-
-                  </div>
-
-                )
-              }
-
-              <input
-                name="promotionPeriod"
-                placeholder="Thời gian khuyến mãi"
-                value={form.promotionPeriod}
-                onChange={handleChange}
-              />
-
-              <input
-                name="cityPrice"
-                placeholder="Giá nội thành"
-                value={form.cityPrice}
-                onChange={handleChange}
-              />
-
-              <input
-                name="suburbPrice"
-                placeholder="Giá ngoại thành"
-                value={form.suburbPrice}
-                onChange={handleChange}
-              />
-
-              <textarea
-                name="promotion"
-                placeholder="Mỗi dòng 1 khuyến mãi"
-                value={form.promotion}
-                onChange={handleChange}
-              />
-
-              <textarea
-                name="advantages"
-                placeholder="Mỗi dòng 1 ưu điểm"
-                value={form.advantages}
-                onChange={handleChange}
-              />
-
-              <textarea
-                name="urbanCoverage"
-                placeholder="Phạm vi nội thành"
-                value={form.urbanCoverage}
-                onChange={handleChange}
-              />
-
-              <textarea
-                name="suburbanCoverage"
-                placeholder="Phạm vi ngoại thành"
-                value={form.suburbanCoverage}
-                onChange={handleChange}
-              />
-
-              <input
-                name="category"
-                placeholder="Danh mục"
-                value={
-                  form.category
-                }
-                onChange={
-                  handleChange
-                }
-              />
-
-              <div className="modal-actions">
-                <button
-                  onClick={
-                    handleSave
-                  }
-                >
-                  Lưu
-                </button>
-
-                <button
-                  onClick={() =>
-                    setShowModal(
-                      false
-                    )
-                  }
-                >
-                  Hủy
-                </button>
-              </div>
-            </div>
-          </div>
+          <ProductModal
+            product={editingProduct}
+            onClose={() =>
+              setShowModal(false)
+            }
+            onSuccess={() => {
+              loadProducts();
+              setShowModal(false);
+            }}
+          />
         )}
+
+        {
+          deleteId && (
+
+            <div className="confirm-overlay">
+
+              <div className="confirm-modal">
+
+                <div className="confirm-icon">
+                  🗑️
+                </div>
+
+                <h3>
+                  Xóa gói khuyến mãi
+                </h3>
+
+                <p>
+                  Bạn có chắc muốn xóa
+                  gói này không?
+                </p>
+
+                <div className="confirm-actions">
+
+                  <button
+                    className="cancel-delete"
+                    onClick={() =>
+                      setDeleteId(null)
+                    }
+                  >
+                    Hủy
+                  </button>
+
+                  <button
+                    className="confirm-delete"
+                    onClick={
+                      confirmDelete
+                    }
+                  >
+                    Xóa
+                  </button>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          )
+        }
       </div>
     </AdminLayout>
   );

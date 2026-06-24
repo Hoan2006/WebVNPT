@@ -11,7 +11,7 @@ import {
   updateEContract,
   deleteEContract,
 } from "../../services/econtractService";
-
+import { toast } from "react-toastify";
 import "../styles/econtracts.css";
 
 function EContractsAdmin() {
@@ -25,6 +25,9 @@ function EContractsAdmin() {
     useState(false);
 
   const [editingId, setEditingId] =
+    useState(null);
+
+  const [deleteId, setDeleteId] =
     useState(null);
 
   const [page, setPage] =
@@ -159,37 +162,77 @@ function EContractsAdmin() {
   };
 
   const handleSave =
-    async () => {
+  async () => {
+
+    try {
+
       if (editingId) {
+
         await updateEContract(
           editingId,
           form
         );
+
+        toast.success(
+          "Cập nhật hợp đồng thành công"
+        );
+
       } else {
+
         await createEContract(
           form
         );
+
+        toast.success(
+          "Thêm hợp đồng thành công"
+        );
+
       }
 
       setShowModal(false);
 
       loadData();
-    };
 
-  const handleDelete =
-    async (id) => {
-      const ok =
-        window.confirm(
-          "Xóa gói này?"
-        );
+    } catch (error) {
 
-      if (!ok) return;
-
-      await deleteEContract(
-        id
+      toast.error(
+        "Có lỗi xảy ra"
       );
 
-      loadData();
+    }
+
+  };
+
+  const handleDelete =
+    (id) => {
+      setDeleteId(id);
+    };
+
+  const confirmDelete =
+    async () => {
+
+      try {
+
+        await deleteEContract(
+          deleteId
+        );
+
+        toast.success(
+          "Xóa hợp đồng thành công"
+        );
+
+        loadData();
+
+      } catch (error) {
+
+        toast.error(
+          "Xóa hợp đồng thất bại"
+        );
+
+      }
+
+      setDeleteId(null);
+
     };
 
   const filtered =
@@ -373,144 +416,136 @@ function EContractsAdmin() {
         {showModal && (
           <div className="modal">
 
-            <div className="modal-content">
+            <div className="modal-content econtract-modal">
 
               <h2>
                 {editingId
-                  ? "Cập nhật gói"
-                  : "Thêm gói"}
+                  ? "Cập nhật hợp đồng"
+                  : "Thêm hợp đồng"}
               </h2>
 
-              <input
-                name="name"
-                placeholder="Tên gói"
-                value={
-                  form.name
-                }
-                onChange={
-                  handleChange
-                }
-              />
+              <div className="form-group">
+                <label>Tên gói</label>
 
-              <input
-                name="price"
-                placeholder="Giá"
-                value={
-                  form.price
-                }
-                onChange={
-                  handleChange
-                }
-              />
-
-              <input
-                name="description"
-                placeholder="Mô tả"
-                value={
-                  form.description
-                }
-                onChange={
-                  handleChange
-                }
-              />
-
-              <input
-                name="buttonText"
-                placeholder="Text nút"
-                value={
-                  form.buttonText
-                }
-                onChange={
-                  handleChange
-                }
-              />
-
-              <label>
                 <input
-                  type="checkbox"
-                  name="popular"
-                  checked={
-                    form.popular
-                  }
-                  onChange={
-                    handleChange
-                  }
+                  name="name"
+                  placeholder="Nhập tên gói"
+                  value={form.name}
+                  onChange={handleChange}
                 />
+              </div>
 
-                Gói nổi bật
-              </label>
+              <div className="form-group">
+                <label>Giá</label>
 
-              <h3>
-                Danh sách tính năng
-              </h3>
+                <input
+                  name="price"
+                  placeholder="Ví dụ: 199.000đ/tháng"
+                  value={form.price}
+                  onChange={handleChange}
+                />
+              </div>
 
-              {form.features?.map(
-                (
-                  feature,
-                  index
-                ) => (
-                  <div
-                    key={
-                      index
-                    }
-                    className="feature-row"
-                  >
-                    <input
-                      value={
-                        feature
-                      }
-                      onChange={(
-                        e
-                      ) =>
-                        handleFeatureChange(
-                          index,
-                          e
-                            .target
-                            .value
-                        )
-                      }
-                    />
+              <div className="form-group">
+                <label>Mô tả</label>
 
-                    <button
-                      type="button"
-                      className="delete-feature"
-                      onClick={() =>
-                        removeFeature(
-                          index
-                        )
-                      }
+                <textarea
+                  name="description"
+                  rows="3"
+                  placeholder="Mô tả ngắn..."
+                  value={form.description}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Text nút đăng ký</label>
+
+                <input
+                  name="buttonText"
+                  placeholder="Đăng ký ngay"
+                  value={form.buttonText}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div className="form-group checkbox-group">
+
+                <label>
+                  <input
+                    type="checkbox"
+                    name="popular"
+                    checked={form.popular}
+                    onChange={handleChange}
+                  />
+
+                  Gói nổi bật
+                </label>
+
+              </div>
+
+              <div className="feature-section">
+
+                <h3>
+                  Danh sách tính năng
+                </h3>
+
+                {form.features?.map(
+                  (feature, index) => (
+                    <div
+                      key={index}
+                      className="feature-row"
                     >
-                      X
-                    </button>
-                  </div>
-                )
-              )}
+                      <input
+                        placeholder={`Tính năng ${
+                          index + 1
+                        }`}
+                        value={feature}
+                        onChange={(e) =>
+                          handleFeatureChange(
+                            index,
+                            e.target.value
+                          )
+                        }
+                      />
 
-              <button
-                type="button"
-                className="add-feature"
-                onClick={
-                  addFeature
-                }
-              >
-                + Thêm tính năng
-              </button>
+                      <button
+                        type="button"
+                        className="delete-feature"
+                        onClick={() =>
+                          removeFeature(index)
+                        }
+                      >
+                        ✕
+                      </button>
+
+                    </div>
+                  )
+                )}
+
+                <button
+                  type="button"
+                  className="add-feature"
+                  onClick={addFeature}
+                >
+                  + Thêm tính năng
+                </button>
+
+              </div>
 
               <div className="modal-actions">
 
                 <button
-                  onClick={
-                    handleSave
-                  }
+                  className="save-btn"
+                  onClick={handleSave}
                 >
                   Lưu
                 </button>
 
                 <button
+                  className="cancel-btn"
                   onClick={() =>
-                    setShowModal(
-                      false
-                    )
+                    setShowModal(false)
                   }
                 >
                   Hủy
@@ -521,6 +556,52 @@ function EContractsAdmin() {
             </div>
 
           </div>
+        )}
+
+        {deleteId && (
+
+          <div className="confirm-overlay">
+
+            <div className="confirm-modal">
+
+              <div className="confirm-icon">
+                🗑️
+              </div>
+
+              <h3>
+                Xóa hợp đồng?
+              </h3>
+
+              <p>
+                Hành động này không thể hoàn tác.
+              </p>
+
+              <div className="confirm-actions">
+
+                <button
+                  className="cancel-confirm"
+                  onClick={() =>
+                    setDeleteId(null)
+                  }
+                >
+                  Hủy
+                </button>
+
+                <button
+                  className="delete-confirm"
+                  onClick={
+                    confirmDelete
+                  }
+                >
+                  Xóa
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
         )}
 
       </div>

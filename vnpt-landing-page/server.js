@@ -2,6 +2,10 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 
+import path from "path";
+import { upload } from "./src/utils/upload.js";
+import { sendContactMail } from "./src/utils/mailService.js";
+
 const app = express();
 
 app.use(cors());
@@ -20,6 +24,7 @@ mongoose.connect(
 const ContactSchema = new mongoose.Schema({
   name: String,
   phone: String,
+  email: String,
   taxCode: String,
   address: String,
   content: String,
@@ -154,6 +159,34 @@ const News = mongoose.model(
 );
 /* END SCHEMA */
 
+
+/* ảnh */
+
+app.use(
+  "/uploads",
+  express.static(
+    path.join(process.cwd(), "uploads")
+  )
+);
+
+app.post(
+  "/api/upload",
+  upload.single("image"),
+  (req, res) => {
+    try {
+      res.json({
+        success: true,
+        imageUrl:
+          `http://localhost:5000/uploads/${req.file.filename}`,
+      });
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+      });
+    }
+  }
+);
+
 /* =========================
    PRODUCTS ADMIN API
 ========================= */
@@ -246,31 +279,47 @@ app.delete(
 app.post(
   "/contact",
   async (req, res) => {
-
     try {
+
+      console.log("BODY:", req.body);
 
       const contact =
         new Contact(req.body);
 
       await contact.save();
 
+      console.log("SAVE OK");
+
+      await sendContactMail({
+        name: req.body.name,
+        phone: req.body.phone,
+        email: req.body.email,
+        address: req.body.address,
+        content: req.body.content,
+      });
+
+      console.log("MAIL OK");
+
       res.json({
-        success: true
+        success: true,
       });
 
     } catch (err) {
 
-      console.log(err);
+      console.error(
+        "CONTACT ERROR:"
+      );
+
+      console.error(err);
 
       res.status(500).json({
-        success: false
+        success: false,
+        message: err.message,
       });
 
     }
-
   }
 );
-
 /* =========================
    SERVICE API
 ========================= */

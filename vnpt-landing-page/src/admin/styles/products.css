@@ -183,3 +183,101 @@
 .promotion-cell{
   width:180px;
 }
+
+.confirm-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  z-index:9999;
+
+  backdrop-filter:blur(4px);
+}
+
+.confirm-modal{
+  width:420px;
+  background:#fff;
+  border-radius:18px;
+  padding:28px;
+
+  text-align:center;
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.18);
+
+  animation:popup .25s ease;
+}
+
+.confirm-icon{
+  font-size:52px;
+  margin-bottom:12px;
+}
+
+.confirm-modal h3{
+  margin:0;
+  font-size:22px;
+  color:#222;
+}
+
+.confirm-modal p{
+  margin-top:12px;
+  color:#666;
+  line-height:1.6;
+}
+
+.confirm-actions{
+  margin-top:24px;
+
+  display:flex;
+  gap:12px;
+}
+
+.confirm-actions button{
+  flex:1;
+  border:none;
+  padding:12px;
+  border-radius:10px;
+
+  font-size:15px;
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:.2s;
+}
+
+.cancel-delete{
+  background:#f2f2f2;
+  color:#333;
+}
+
+.cancel-delete:hover{
+  background:#e8e8e8;
+}
+
+.confirm-delete{
+  background:#ff4d4f;
+  color:white;
+}
+
+.confirm-delete:hover{
+  background:#e53935;
+}
+
+@keyframes popup{
+
+  from{
+    opacity:0;
+    transform:scale(.9);
+  }
+
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+
+}
