@@ -25,9 +25,10 @@ function AdminLogin(){
  const navigate =
  useNavigate();
 
- const handleLogin = ()=>{
+ const handleLogin =
+  async ()=>{
   const ok =
-  login(
+  await login(
     username,
     password
   );

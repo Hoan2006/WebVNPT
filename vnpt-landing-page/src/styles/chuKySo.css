@@ -16,7 +16,7 @@ body {
 
 .banner-image img {
   width: 100%;
-  display: block;
+  display: block; 
 }
 
 /* =========================
@@ -53,6 +53,38 @@ body {
 }
 
 /* =========================
+   SECTION DIVIDER (giữa VNPT-CA và SmartCA)
+========================= */
+
+.section-divider {
+  position: relative;
+  text-align: center;
+  margin: 10px 0 20px;
+}
+
+.section-divider::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #0072ce, transparent);
+}
+
+.section-divider span {
+  position: relative;
+  background: #fff;
+  padding: 8px 30px;
+  color: #0072ce;
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: 2px;
+  border: 2px solid #0072ce;
+  border-radius: 30px;
+}
+
+/* =========================
    INTRO TEXT
 ========================= */
 
@@ -67,6 +99,156 @@ body {
   color: #444;
   margin-bottom: 18px;
   text-align: justify;
+}
+
+/* =========================
+   PRICING TABS
+========================= */
+
+.pricing-tabs-wrap {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.pricing-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.pricing-tab-btn {
+  border: 2px solid #0072ce;
+  background: #fff;
+  color: #0072ce;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pricing-tab-btn:hover {
+  background: rgba(0, 114, 206, 0.08);
+}
+
+.pricing-tab-btn.active {
+  background: #0072ce;
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(0, 114, 206, 0.3);
+}
+
+.pricing-tab-desc {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 36px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #555;
+}
+
+/* =========================
+   PRICING CARDS
+========================= */
+
+.pricing-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.pricing-card {
+  position: relative;
+  background: #fff;
+  border-radius: 18px;
+  padding: 30px 24px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s ease;
+}
+
+.pricing-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+
+.pricing-card.popular {
+  border-color: #0072ce;
+}
+
+.popular-tag {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0072ce;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 16px;
+  border-radius: 999px;
+  letter-spacing: 0.5px;
+}
+
+.pricing-duration {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #888;
+  margin-bottom: 6px;
+}
+
+.pricing-price {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 800;
+  color: #0072ce;
+  margin-bottom: 20px;
+}
+
+.pricing-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  flex-grow: 1;
+}
+
+.pricing-features li {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: #555;
+  padding-left: 26px;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.pricing-features li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #0072ce;
+  font-weight: 700;
+}
+
+.pricing-btn {
+  border: none;
+  background: #0072ce;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 12px 0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pricing-btn:hover {
+  background: #005ba3;
 }
 
 /* =========================
@@ -138,7 +320,6 @@ body {
 
   line-height: 1.4;
 
-  /* QUAN TRỌNG: chống vỡ từng 2-3 chữ */
   word-break: keep-all;
   overflow-wrap: normal;
 }
@@ -152,7 +333,6 @@ body {
   line-height: 1.75;
   color: #555;
 
-  /* FIX TEXT BREAK LỎNG LẺ */
   word-break: normal;
   overflow-wrap: break-word;
 }
@@ -210,5 +390,19 @@ body {
 
   .benefit-card.modern {
     padding: 20px;
+  }
+
+  .section-divider span {
+    font-size: 16px;
+    padding: 6px 18px;
+  }
+
+  .pricing-tab-btn {
+    font-size: 13px;
+    padding: 8px 16px;
+  }
+
+  .pricing-price {
+    font-size: 24px;
   }
 }

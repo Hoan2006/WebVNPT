@@ -1,0 +1,93 @@
+[{
+  "_id": {
+    "$oid": "6a2b620b6c1d2e32832cecaf"
+  },
+  "id": 1,
+  "title": "Internet Hộ Gia Đình",
+  "description": "Home Combo là gói combo gồm truyền hình, internet và di động Vinaphone với nhiều ưu đãi hấp dẫn.",
+  "image": "/services/home.jpg",
+  "features": [
+    "Truyền hình phong phú đến 176 kênh",
+    "Trang bị modem WiFi 2 băng tần 2.4GHz - 5GHz",
+    "Tặng đến 2 tháng cước sử dụng"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6a2b620b6c1d2e32832cecb0"
+  },
+  "id": 2,
+  "title": "Internet Doanh Nghiệp",
+  "description": "Internet tốc độ cao, ổn định, phù hợp cho Doanh nghiệp và hộ gia đình giá chỉ từ 220.000đ/tháng",
+  "image": "/services/fiber.jpg",
+  "features": [
+    "Giá chỉ từ 220.000đ/tháng",
+    "Tốc độ lên đến 1000Mbps",
+    "WiFi 2 băng tần 2.4GHz - 5GHz",
+    "Hỗ trợ WiFi Mesh",
+    "Tặng đến 2 tháng cước sử dụng"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6a2b620b6c1d2e32832cecb1"
+  },
+  "id": 3,
+  "title": "Internet Leased Line",
+  "description": "Internet tốc độ cao, kênh thuê riêng biệt từ khách hàng đến mạng core Internet của VNPT",
+  "image": "/services/leasedline.jpg",
+  "features": [
+    "Đường truyền riêng biệt đến mạng Core Internet VNPT",
+    "Trang bị Modem DrayTek",
+    "Miễn phí lắp đặt",
+    "Lựa chọn tốc độ theo nhu cầu doanh nghiệp"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6a2b620b6c1d2e32832cecb2"
+  },
+  "id": 4,
+  "title": "Hợp Đồng Điện Tử VNPT eContract",
+  "description": "Giải pháp ký hợp đồng điện tử nhanh chóng, an toàn và tiết kiệm.",
+  "image": "/services/econtract.jpg",
+  "features": [
+    "Ký điện tử không cần USB Token",
+    "Mã hóa bảo vệ hợp đồng",
+    "Lưu trữ an toàn, tìm kiếm dễ dàng",
+    "Tiết kiệm đến 70% chi phí",
+    "Tối ưu đến 80% thời gian xử lý"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6a2b620b6c1d2e32832cecb3"
+  },
+  "id": 5,
+  "title": "Chữ Ký Số VNPT CA",
+  "description": "Giải pháp chữ ký số dành cho cá nhân và doanh nghiệp.",
+  "image": "/services/signature.jpg",
+  "features": [
+    "Ký hóa đơn điện tử",
+    "Kê khai thuế trực tuyến",
+    "Bảo mật cao theo tiêu chuẩn Bộ TT&TT",
+    "Sử dụng trên nhiều nền tảng",
+    "Hỗ trợ 24/7"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6a2b620b6c1d2e32832cecb4"
+  },
+  "id": 6,
+  "title": "Giải Pháp Hộ Kinh Doanh",
+  "description": "Bộ giải pháp chuyển đổi số toàn diện cho hộ kinh doanh.",
+  "image": "/services/business.jpg",
+  "features": [
+    "Hóa đơn điện tử",
+    "Chữ ký số",
+    "Internet tốc độ cao",
+    "Quản lý bán hàng",
+    "Tiết kiệm chi phí vận hành"
+  ]
+}]

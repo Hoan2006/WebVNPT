@@ -3,15 +3,15 @@ import {
   useState,
   useContext
 } from "react";
-
+import {
+  adminLogin
+}
+from "../services/adminService";
 
 const AuthContext =
 createContext();
 
-
 export function AuthProvider({children}){
-
-
   const [admin,setAdmin] =
   useState(
     JSON.parse(
@@ -21,55 +21,58 @@ export function AuthProvider({children}){
     null
   );
 
-
   const login =
-  (username,password)=>{
+  async (
+    username,
+    password
+  )=>{
 
+    try{
 
-    // tài khoản admin tạo sẵn
+      const res =
+      await adminLogin({
 
-    const ADMIN = {
-      username:"admin",
-      password:"Hoan@123",
-      role:"admin"
-    };
+        username,
+        password
 
+      });
 
-    if(
-      username === ADMIN.username &&
-      password === ADMIN.password
-    ){
+      localStorage.setItem(
+        "token",
+        res.data.token
+      );
 
       localStorage.setItem(
         "admin",
-        JSON.stringify(ADMIN)
+        JSON.stringify(
+          res.data.admin
+        )
       );
 
-
-      setAdmin(ADMIN);
-
+      setAdmin(
+        res.data.admin
+      );
 
       return true;
 
+    }catch(error){
+
+      return false;
+
     }
-
-
-    return false;
 
   };
 
-
   const logout = ()=>{
 
-    localStorage.removeItem(
-      "admin"
-    );
+    localStorage.removeItem("admin");
+
+    localStorage.removeItem("token");
 
     setAdmin(null);
 
   };
-
-
+  
   return (
 
     <AuthContext.Provider

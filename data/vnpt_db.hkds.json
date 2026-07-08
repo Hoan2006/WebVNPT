@@ -1,0 +1,24 @@
+[{
+  "_id": {
+    "$oid": "6a2ec977f52e78d16a71535c"
+  },
+  "title": "Gói 5.000 hoá đơn, phần mềm HKD và chữ ký số 12 tháng",
+  "price": "1.180.000 VND/năm",
+  "featured": false
+},
+{
+  "_id": {
+    "$oid": "6a2ec977f52e78d16a71535d"
+  },
+  "title": "Gói 5.000 hoá đơn, phần mềm HKD và chữ ký số 18 tháng",
+  "price": "1.602.000 VND/năm",
+  "featured": true
+},
+{
+  "_id": {
+    "$oid": "6a2ec977f52e78d16a71535e"
+  },
+  "title": "Gói 5.000 hoá đơn, phần mềm HKD và chữ ký số 24 tháng",
+  "price": "1.896.000 VND/năm",
+  "featured": false
+}]

@@ -1,21 +1,57 @@
 import express from "express";
+
 import mongoose from "mongoose";
+
 import cors from "cors";
 
 import path from "path";
 import { upload } from "./src/utils/upload.js";
 import { sendContactMail } from "./src/utils/mailService.js";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import {
+  verifyAdmin
+} from "./src/middleware/auth.js";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(
-  "mongodb://localhost:27017/vnpt_db"
-);
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("✅ Kết nối MongoDB thành công"))
+  .catch((err) => console.error("❌ Lỗi kết nối MongoDB:", err.message));
 
 /* START SCHEMA */
+/* =========================
+   Admin account
+========================= */
+const AdminSchema =
+new mongoose.Schema({
+
+  username:{
+    type:String,
+    unique:true
+  },
+
+  password:String,
+
+  role:{
+    type:String,
+    default:"admin"
+  }
+
+});
+
+const Admin =
+mongoose.model(
+  "Admin",
+  AdminSchema,
+  "admins"
+);
 
 /* =========================
    CONTACT
@@ -159,16 +195,91 @@ const News = mongoose.model(
 );
 /* END SCHEMA */
 
+/* LOGIN */
+app.post(
+  "/api/admin/login",
+  async(req,res)=>{
 
-/* ảnh */
+    try{
 
-app.use(
-  "/uploads",
-  express.static(
-    path.join(process.cwd(), "uploads")
-  )
+      const {
+        username,
+        password
+      } = req.body;
+
+      const admin =
+      await Admin.findOne({
+        username
+      });
+
+      if(!admin){
+
+        return res.status(401)
+        .json({
+          success:false,
+          message:"Sai tài khoản"
+        });
+
+      }
+
+      const valid =
+      await bcrypt.compare(
+        password,
+        admin.password
+      );
+
+      if(!valid){
+
+        return res.status(401)
+        .json({
+          success:false,
+          message:"Sai mật khẩu"
+        });
+
+      }
+
+      const token = jwt.sign(
+
+      {
+
+      id: admin._id,
+
+      role: admin.role
+
+      },
+
+      process.env.JWT_SECRET,
+
+      { expiresIn: "1d" }
+
+      );
+
+      res.json({
+
+        success:true,
+
+        token,
+
+        admin:{
+          id:admin._id,
+          username:
+          admin.username,
+          role:
+          admin.role
+        }
+
+      });
+
+    }catch(error){
+
+      res.status(500).json(error);
+
+    }
+
+  }
 );
 
+/* ảnh */
 app.post(
   "/api/upload",
   upload.single("image"),
@@ -176,10 +287,10 @@ app.post(
     try {
       res.json({
         success: true,
-        imageUrl:
-          `http://localhost:5000/uploads/${req.file.filename}`,
+        imageUrl: req.file.path,
       });
     } catch (error) {
+      console.error("UPLOAD ERROR:", error);   // ← thêm dòng này
       res.status(500).json({
         success: false,
       });
@@ -211,6 +322,7 @@ app.get(
 
 app.post(
   "/api/products",
+  verifyAdmin,
   async (req, res) => {
     try {
       const product =
@@ -231,6 +343,7 @@ app.post(
 
 app.put(
   "/api/products/:id",
+  verifyAdmin,
   async (req, res) => {
     try {
       const product =
@@ -253,6 +366,7 @@ app.put(
 
 app.delete(
   "/api/products/:id",
+  verifyAdmin,
   async (req, res) => {
     try {
       await Service.findByIdAndDelete(
@@ -400,6 +514,7 @@ app.get(
 
 app.post(
   "/api/services",
+  verifyAdmin,
   async (req, res) => {
     try {
       const service =
@@ -420,6 +535,7 @@ app.post(
 
 app.put(
   "/api/services/:id",
+  verifyAdmin,
   async (req, res) => {
     try {
       const service =
@@ -444,6 +560,7 @@ app.put(
 
 app.delete(
   "/api/services/:id",
+  verifyAdmin,
   async (req, res) => {
     try {
       await HomeService.findByIdAndDelete(
@@ -536,6 +653,7 @@ app.get(
 
 app.post(
   "/api/econtracts",
+  verifyAdmin,
   async (req, res) => {
     try {
       const packageData =
@@ -556,6 +674,7 @@ app.post(
 
 app.put(
   "/api/econtracts/:id",
+  verifyAdmin,
   async (req, res) => {
     try {
       const packageData =
@@ -578,6 +697,7 @@ app.put(
 
 app.delete(
   "/api/econtracts/:id",
+  verifyAdmin,
   async (req, res) => {
     try {
       await EContract.findByIdAndDelete(
@@ -644,6 +764,7 @@ app.get(
 
 app.post(
   "/api/hkds",
+  verifyAdmin,
   async (req, res) => {
     try {
       const packageData =
@@ -664,6 +785,7 @@ app.post(
 
 app.put(
   "/api/hkds/:id",
+  verifyAdmin,
   async (req, res) => {
     try {
       const packageData =
@@ -688,6 +810,7 @@ app.put(
 
 app.delete(
   "/api/hkds/:id",
+  verifyAdmin,
   async (req, res) => {
     try {
       await HKD.findByIdAndDelete(
@@ -770,6 +893,7 @@ app.get(
 
 app.post(
   "/api/news",
+  verifyAdmin,
   async (req, res) => {
 
     const article =
@@ -783,6 +907,7 @@ app.post(
 
 app.put(
   "/api/news/:id",
+  verifyAdmin,
   async (req, res) => {
 
     const article =
@@ -798,6 +923,7 @@ app.put(
 
 app.delete(
   "/api/news/:id",
+  verifyAdmin,
   async (req, res) => {
 
     await News.findByIdAndDelete(
@@ -811,12 +937,17 @@ app.delete(
   }
 );
 
-app.listen(
-  5000,
-  () => {
-    console.log(
-      "Server running on port 5000"
-    );
-  }
-);
+const PORT = process.env.PORT || 5000;
 
+// Bắt mọi lỗi middleware (kể cả lỗi từ multer/cloudinary) chưa được xử lý ở trên
+app.use((err, req, res, next) => {
+  console.error("SERVER ERROR:", err);
+  res.status(500).json({
+    success: false,
+    message: err.message,
+  });
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});

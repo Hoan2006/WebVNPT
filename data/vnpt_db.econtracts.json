@@ -1,0 +1,98 @@
+[{
+  "_id": {
+    "$oid": "6a3ce03641dc701a86d89ba3"
+  },
+  "name": "E100",
+  "price": "666.900 VNĐ",
+  "description": "100 hợp đồng điện tử - 500MB lưu trữ",
+  "buttonText": "Đăng ký tư vấn",
+  "popular": false,
+  "features": [
+    "100 hợp đồng điện tử",
+    "500MB lưu trữ",
+    "Ký số trực tuyến",
+    "Quản lý và tra cứu hợp đồng"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6a3ce03641dc701a86d89ba4"
+  },
+  "name": "E200",
+  "price": "1.231.200 VNĐ",
+  "description": "200 hợp đồng điện tử - 1.000MB lưu trữ",
+  "buttonText": "Đăng ký tư vấn",
+  "popular": false,
+  "features": [
+    "200 hợp đồng điện tử",
+    "1.000MB lưu trữ",
+    "Ký số trực tuyến",
+    "Quản lý và tra cứu hợp đồng"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6a3ce03641dc701a86d89ba5"
+  },
+  "name": "E500",
+  "price": "2.818.800 VNĐ",
+  "description": "500 hợp đồng điện tử - 2.500MB lưu trữ",
+  "buttonText": "Đăng ký tư vấn",
+  "popular": true,
+  "features": [
+    "500 hợp đồng điện tử",
+    "2.500MB lưu trữ",
+    "Phù hợp doanh nghiệp vừa và nhỏ",
+    "Ký số trực tuyến",
+    "Quản lý và tra cứu hợp đồng"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6a3ce03641dc701a86d89ba6"
+  },
+  "name": "E1000",
+  "price": "6.628.800 VNĐ",
+  "description": "1.000 hợp đồng điện tử - 5.000MB lưu trữ",
+  "buttonText": "Đăng ký tư vấn",
+  "popular": true,
+  "features": [
+    "1.000 hợp đồng điện tử",
+    "5.000MB lưu trữ",
+    "Tối ưu chi phí trên mỗi hợp đồng",
+    "Ký số trực tuyến",
+    "Quản lý và tra cứu hợp đồng"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6a3ce03641dc701a86d89ba7"
+  },
+  "name": "E2000",
+  "price": "11.664.000 VNĐ",
+  "description": "2.000 hợp đồng điện tử - 10.000MB lưu trữ",
+  "buttonText": "Đăng ký tư vấn",
+  "popular": false,
+  "features": [
+    "2.000 hợp đồng điện tử",
+    "10.000MB lưu trữ",
+    "Ký số trực tuyến",
+    "Quản lý và tra cứu hợp đồng"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6a3ce03641dc701a86d89ba8"
+  },
+  "name": "E5000",
+  "price": "28.080.000 VNĐ",
+  "description": "5.000 hợp đồng điện tử - 25.000MB lưu trữ",
+  "buttonText": "Đăng ký tư vấn",
+  "popular": false,
+  "features": [
+    "5.000 hợp đồng điện tử",
+    "25.000MB lưu trữ",
+    "Ký số trực tuyến",
+    "Quản lý và tra cứu hợp đồng"
+  ]
+}]

@@ -38,72 +38,213 @@ useEffect(() => {
       <section className="banner-image">
       <img src="/hopdongdientu2.jpg" alt="Hợp đồng điện tử VNPT" />
       </section>
-      {/* Giới thiệu */}
-      <section className="contract-intro">
+
+      <section className="problem-section">
         <div className="container">
 
           <div className="section-heading">
-            <h2>Hợp Đồng Điện Tử</h2>
-
-            <p>
-            VNPT eContract là giải pháp hợp đồng điện tử giúp doanh nghiệp và cá nhân
-            thực hiện toàn bộ quy trình khởi tạo, đàm phán, ký kết, lưu trữ và quản lý
-            hợp đồng hoàn toàn trực tuyến. Nền tảng giúp rút ngắn thời gian xử lý hồ sơ,
-            tiết kiệm chi phí vận hành, nâng cao hiệu quả quản trị và mở rộng cơ hội
-            kinh doanh trong môi trường số.
-          </p>
+            <h2>⚠️ Doanh Nghiệp Đang Gặp Những Vấn Đề Này?</h2>
           </div>
 
-          <div className="intro-grid">
-            
-            <div className="intro-card">
-              <h3>📝 Ký Hợp Đồng Trực Tuyến</h3>
+          <div className="problem-grid">
+
+            <div className="problem-card">
+              <h3>Mất nhiều ngày để hoàn tất hợp đồng</h3>
+
               <p>
-                Ký kết hợp đồng mọi lúc mọi nơi trên máy tính,
-                điện thoại hoặc máy tính bảng mà không cần gặp mặt trực tiếp.
+                In ấn → Ký tay → Chuyển phát →
+                Chờ đối tác ký → Lưu trữ.
+              </p>
+
+              <p>
+                Một hợp đồng có thể mất từ
+                3 - 7 ngày mới hoàn tất.
               </p>
             </div>
 
-            <div className="intro-card">
-              <h3>☁️ Lưu Trữ Điện Tử</h3>
-              <p>
-                Hợp đồng được lưu trữ tập trung trên nền tảng điện toán đám mây,
-                giúp tra cứu nhanh chóng và an toàn.
-              </p>
+            <div className="problem-card">
+              <h3>Chi phí vận hành tăng cao</h3>
+
+              <ul>
+                <li>Chi phí in ấn</li>
+                <li>Chi phí chuyển phát</li>
+                <li>Chi phí lưu kho hồ sơ</li>
+                <li>Nhân sự quản lý giấy tờ</li>
+              </ul>
             </div>
 
-            <div className="intro-card">
-              <h3>📊 Theo Dõi Trạng Thái</h3>
-              <p>
-                Quản lý toàn bộ vòng đời hợp đồng, theo dõi tiến độ xử lý,
-                ký duyệt và hoàn tất theo thời gian thực.
-              </p>
+            <div className="problem-card">
+              <h3>Khó kiểm soát hợp đồng</h3>
+
+              <ul>
+                <li>Thất lạc hồ sơ</li>
+                <li>Không biết đã ký chưa</li>
+                <li>Khó tìm kiếm đối chiếu</li>
+              </ul>
             </div>
 
-            <div className="intro-card">
-              <h3>🔐 Tích Hợp Chữ Ký Số</h3>
-              <p>
-                Kết hợp chữ ký số VNPT CA giúp đảm bảo giá trị pháp lý,
-                xác thực danh tính và bảo mật dữ liệu giao dịch.
-              </p>
+          </div>
+
+          <div className="problem-note">
+            📍 Ký kết với khách hàng ở xa khiến quá trình
+            xử lý kéo dài và ảnh hưởng tiến độ kinh doanh.
+          </div>
+
+        </div>
+      </section>
+
+      <section className="solution-section">
+
+        <div className="container">
+
+          <div className="section-heading">
+            <h2>Giải Pháp Hợp Đồng Điện Tử VNPT eContract</h2>
+
+            <p>
+              Số hóa toàn bộ quy trình ký kết và quản lý
+              hợp đồng trên một nền tảng duy nhất.
+            </p>
+          </div>
+
+          <div className="benefit-grid">
+
+            <div className="benefit-card">
+              <h3>📝 Tạo lập hợp đồng điện tử</h3>
+
+              <p>Hợp đồng dịch vụ</p>
+              <p>Hợp đồng mua bán</p>
+              <p>Hợp đồng nguyên tắc</p>
+              <p>Phụ lục hợp đồng</p>
+            </div>
+
+            <div className="benefit-card">
+              <h3>✍️ Ký số trực tuyến</h3>
+
+              <p>SmartCA</p>
+              <p>USB Token</p>
+              <p>HSM</p>
+              <p>Ký từ xa trên điện thoại</p>
+            </div>
+
+            <div className="benefit-card">
+              <h3>🔁 Quản lý quy trình phê duyệt</h3>
+
+              <p>Người tạo</p>
+              <p>Người duyệt</p>
+              <p>Người ký nháy</p>
+              <p>Người ký chính thức</p>
+            </div>
+
+            <div className="benefit-card">
+              <h3>🗂️ Lưu trữ và tra cứu</h3>
+
+              <p>Quản lý tập trung</p>
+              <p>Tìm kiếm nhanh</p>
+              <p>Theo dõi lịch sử ký</p>
+              <p>Lưu trữ an toàn</p>
             </div>
 
           </div>
 
         </div>
+
       </section>
-      
+
+      <section className="labor-section">
+
+        <div className="container">
+
+          <div className="section-heading">
+            <h2>Giải Pháp Hợp Đồng Lao Động Điện Tử</h2>
+          </div>
+
+          <div className="intro-content">
+
+            <p>
+              Số hóa toàn bộ quy trình nhân sự,
+              ký hợp đồng lao động từ xa,
+              ký phụ lục và gia hạn hợp đồng
+              với nhân sự tại nhiều tỉnh thành.
+            </p>
+
+            <ul className="labor-list">
+              <li>Tuân thủ Nghị định 337/2025/NĐ-CP</li>
+              <li>Ký hợp đồng lao động từ xa</li>
+              <li>Ký phụ lục hợp đồng</li>
+              <li>Gia hạn hợp đồng</li>
+              <li>Lưu trữ hồ sơ điện tử tập trung</li>
+            </ul>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* Bảng giá */}
+      <section className="pricing">
+
+        <div className="container">
+
+          <div className="section-heading">
+            <h2>Bảng Giá Dịch Vụ</h2>
+          </div>
+
+          <div className="pricing-grid">
+
+              {packages.map(item => (
+
+                <div
+                  key={item._id}
+                  className={`price-card ${
+                    item.popular
+                      ? "popular"
+                      : ""
+                  }`}
+                >
+                        <h3>{item.name}</h3>
+
+                        <h4>{item.price}</h4>
+
+                        <p className="price-desc">
+                    {item.description}
+                  </p>
+
+                  <button
+                    className="register-btn"
+                    onClick={() => setShowRegister(true)}
+                  >
+                    {item.buttonText}
+                  </button>
+
+                  <ul className="feature-list">
+                    {item.features?.map((feature, index) => (
+                      <li key={index}>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+              ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
       {/* Quy trình */}
       <section className="process">
 
         <div className="container">
 
           <div className="section-heading">
-            <h2>Quy Trình Ký Kết</h2>
+            <h2>Quy Trình Ký Kết Hợp Đồng Điện Tử</h2>
           </div>
 
           <div className="process-grid">
-
+ 
             <div className="step">
               <span>1</span>
               <h3>Tạo hợp đồng điện tử </h3>
@@ -214,60 +355,6 @@ useEffect(() => {
             </div>
 
           </div>
-
-        </div>
-
-      </section>
-
-      {/* Bảng giá */}
-      <section className="pricing">
-
-        <div className="container">
-
-          <div className="section-heading">
-            <h2>Bảng Giá Dịch Vụ</h2>
-          </div>
-
-          <div className="pricing-grid">
-
-  {packages.map(item => (
-
-    <div
-      key={item._id}
-      className={`price-card ${
-        item.popular
-          ? "popular"
-          : ""
-      }`}
-    >
-
-      <h3>{item.name}</h3>
-
-      <h4>{item.price}</h4>
-
-      <p className="price-desc">
-  {item.description}
-</p>
-
-<button
-  className="register-btn"
-  onClick={() => setShowRegister(true)}
->
-  {item.buttonText}
-</button>
-
-<ul className="feature-list">
-  {item.features?.map((feature, index) => (
-    <li key={index}>
-      {feature}
-    </li>
-  ))}
-</ul>
-    </div>
-
-  ))}
-
-</div>
 
         </div>
 

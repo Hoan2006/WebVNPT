@@ -1,67 +1,25 @@
 import multer from "multer";
-import path from "path";
-import fs from "fs";
+import { CloudinaryStorage } from "multer-storage-cloudinary";
+import cloudinary from "./cloudinary.js";
 
-const uploadPath = path.join(
-  process.cwd(),
-  "uploads"
-);
-
-if (!fs.existsSync(uploadPath)) {
-  fs.mkdirSync(uploadPath, {
-    recursive: true,
-  });
-}
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "uploads/");
-  },
-
-  filename: (req, file, cb) => {
-    const uniqueSuffix =
-      Date.now() +
-      "-" +
-      Math.round(Math.random() * 1e9);
-
-    cb(
-      null,
-      uniqueSuffix +
-        path.extname(file.originalname)
-    );
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: "vnpt_uploads", // tên thư mục trên Cloudinary, ông muốn đổi gì cũng được
+    allowed_formats: ["jpg", "jpeg", "png", "gif", "webp"],
+    // Cloudinary tự tạo tên file unique, không cần tự đặt tên như trước
   },
 });
 
-const fileFilter = (
-  req,
-  file,
-  cb
-) => {
-  const fileTypes =
-    /jpeg|jpg|png|gif|webp/;
+const fileFilter = (req, file, cb) => {
+  const fileTypes = /jpeg|jpg|png|gif|webp/;
+  const mimetype = fileTypes.test(file.mimetype);
 
-  const extname =
-    fileTypes.test(
-      path
-        .extname(file.originalname)
-        .toLowerCase()
-    );
-
-  const mimetype =
-    fileTypes.test(file.mimetype);
-
-  if (extname && mimetype) {
+  if (mimetype) {
     cb(null, true);
   } else {
-    cb(
-      new Error(
-        "Chỉ được upload ảnh"
-      )
-    );
+    cb(new Error("Chỉ được upload ảnh"));
   }
 };
 
-export const upload = multer({
-  storage,
-  fileFilter,
-});
+export const upload = multer({ storage, fileFilter });

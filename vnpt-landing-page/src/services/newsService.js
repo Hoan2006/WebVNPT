@@ -3,45 +3,68 @@ import axios from "axios";
 const API =
   "http://localhost:5000/api/news";
 
+const authConfig = () => ({
+
+  headers:{
+
+    Authorization:
+    `Bearer ${localStorage.getItem("token")}`
+
+  }
+
+});
+
 export const getNews =
-  () => axios.get(API);
+() => axios.get(API);
 
 export const createNews =
-  (data) =>
-    axios.post(API, data);
+(data) =>
+axios.post(
+  API,
+  data,
+  authConfig()
+);
 
 export const updateNews =
-  (id, data) =>
-    axios.put(
-      `${API}/${id}`,
-      data
-    );
+(id,data)=>
+axios.put(
+  `${API}/${id}`,
+  data,
+  authConfig()
+);
 
 export const deleteNews =
-  (id) =>
-    axios.delete(
-      `${API}/${id}`
-    );
-  
+(id)=>
+axios.delete(
+  `${API}/${id}`,
+  authConfig()
+);
+
 export const uploadImage =
-  async (file) => {
+async(file)=>{
 
-    const formData =
-      new FormData();
+  const formData =
+  new FormData();
 
-    formData.append(
-      "image",
-      file
-    );
+  formData.append(
+    "image",
+    file
+  );
 
-    return await axios.post(
-      "http://localhost:5000/api/upload",
-      formData,
-      {
-        headers: {
-          "Content-Type":
-            "multipart/form-data",
-        },
+  return await axios.post(
+    "http://localhost:5000/api/upload",
+    formData,
+    {
+      headers:{
+
+        "Content-Type":
+        "multipart/form-data",
+
+        Authorization:
+        `Bearer ${localStorage.getItem("token")}`
+
       }
-    );
-  };
+    }
+  );
+
+};

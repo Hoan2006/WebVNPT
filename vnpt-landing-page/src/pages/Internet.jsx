@@ -55,7 +55,7 @@ function Internet() {
                 setActiveTab("fiber")
               }
             >
-              Internet Cáp Quang
+              Internet Doanh Nghiệp
             </button>
 
             <button
@@ -138,7 +138,7 @@ function Internet() {
           {activeTab === "fiber" && (
             <div className="tab-content">
 
-              <h2>Internet Cáp Quang Doanh Nghiệp FiberVNN</h2>
+              <h2>Internet Doanh Nghiệp FiberVNN</h2>
 
               <p>
               FiberVNN Doanh Nghiệp là dịch vụ Internet chuyên dụng
